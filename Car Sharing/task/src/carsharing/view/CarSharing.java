@@ -40,8 +40,12 @@ public class CarSharing {
         return new CarSharing(databaseFilename);
     }
 
-    public CarSharing build() {
+    public CarSharing createDatabaseTable() {
         BaseRepository.createDatabaseTable(databaseFilename);
+        return this;
+    }
+
+    public CarSharing build() {
 
         companyController = new CompanyController(new CompanyDaoImpl(CompanyRepository.init(databaseFilename)));
 
@@ -144,8 +148,8 @@ public class CarSharing {
 
     }
 
-    private void showMyRentedCar(int id) {
-        Customer customer = customerController.findById(id);
+    private void showMyRentedCar(int customerId) {
+        Customer customer = customerController.findById(customerId);
 
         final int rentedCarId = customer.getRentedCarId();
 
