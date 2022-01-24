@@ -6,7 +6,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static carsharing.util.CarSharingConstants.*;
+import static carsharing.util.CarSharingSqlStatement.*;
 
 public class CustomerRepository extends BaseRepository {
 

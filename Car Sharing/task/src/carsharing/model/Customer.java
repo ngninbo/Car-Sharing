@@ -2,6 +2,11 @@ package carsharing.model;
 
 import java.util.Objects;
 
+/**
+ * This class represents a simple POJO containing get/set methods
+ * to store Customer data retrieved using CustomerDAO class
+ * @author Beauclair Dongmo Ngnintedem
+ */
 public class Customer {
 
     private int id;
@@ -36,10 +41,6 @@ public class Customer {
 
     public int getRentedCarId() {
         return rentedCarId;
-    }
-
-    public void setRentedCarId(int rentedCarId) {
-        this.rentedCarId = rentedCarId;
     }
 
     @Override

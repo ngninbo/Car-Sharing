@@ -5,6 +5,12 @@ import carsharing.repository.CarRepository;
 
 import java.util.List;
 
+/**
+ * Data Access Object concrete class.
+ * This class implements the CarDao interface
+ * @see carsharing.service.CarDao
+ * @author Beauclair Dongmo Ngnintedem
+ */
 public class CarDaoImpl implements CarDao {
 
     private final CarRepository carRepository;

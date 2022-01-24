@@ -422,10 +422,16 @@ files:
                 ");";
     }
   learner_created: true
+- name: src/carsharing/service/CompanyDaoImpl.java
+  visible: true
+  learner_created: true
+- name: src/carsharing/controller/CompanyController.java
+  visible: true
+  learner_created: true
 - name: src/carsharing/service/CompanyDao.java
   visible: true
   learner_created: true
-- name: src/carsharing/service/CompanyDaoImpl.java
+- name: src/carsharing/view/CarSharing.java
   visible: true
   learner_created: true
 - name: src/carsharing/repository/CompanyRepository.java
@@ -478,12 +484,6 @@ files:
             }
         }
     }
-  learner_created: true
-- name: src/carsharing/controller/CompanyController.java
-  visible: true
-  learner_created: true
-- name: src/carsharing/view/CarSharing.java
-  visible: true
   learner_created: true
 feedback_link: https://hyperskill.org/learn/step/11502#comment
 status: Solved

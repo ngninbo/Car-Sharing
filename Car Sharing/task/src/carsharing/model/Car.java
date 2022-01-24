@@ -2,6 +2,10 @@ package carsharing.model;
 
 import java.util.Objects;
 
+/**
+ * This class represents a simple POJO containing get/set methods to store data retrieved using DAO class
+ * @author Beauclair Dongmo Ngnintedem
+ */
 public class Car {
 
     private final int id;

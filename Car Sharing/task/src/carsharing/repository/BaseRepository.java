@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import static carsharing.util.CarSharingConstants.*;
+import static carsharing.util.CarSharingSqlStatement.*;
 
 public abstract class BaseRepository {
 

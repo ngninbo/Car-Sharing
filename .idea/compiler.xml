@@ -9,6 +9,8 @@
       <module name="Car_Sharing.Car_Sharing-task-build-test-results.main" target="11" />
       <module name="Car_Sharing.Car_Sharing-task-build-tmp.main" target="11" />
       <module name="Car_Sharing.Car_Sharing-task.main" target="11" />
+      <module name="Car_Sharing.Topics-Arrays_as_parameters-Application_as_a_class.main" target="11" />
+      <module name="Car_Sharing.Topics-Arrays_as_parameters-Theory.main" target="11" />
       <module name="Car_Sharing.Topics-Branching_statements-Even_or_odd.main" target="11" />
       <module name="Car_Sharing.Topics-Branching_statements-The_sequence.main" target="11" />
       <module name="Car_Sharing.Topics-Branching_statements-Theory.main" target="11" />

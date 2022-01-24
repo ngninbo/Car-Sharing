@@ -5,6 +5,12 @@ import carsharing.repository.CustomerRepository;
 
 import java.util.List;
 
+/**
+ * Data Access Object concrete class.
+ * This class implements the CustomerDao interface
+ * @see carsharing.service.CustomerDao
+ * @author Beauclair Dongmo Ngnintedem
+ */
 public class CustomerDaoImpl implements CustomerDao {
 
     private final CustomerRepository customerRepository;

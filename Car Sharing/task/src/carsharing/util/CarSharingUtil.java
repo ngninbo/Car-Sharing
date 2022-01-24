@@ -48,7 +48,7 @@ public class CarSharingUtil {
 
         IntStream.range(0, mainMenuOptions.size())
                 .forEach(i -> System.out.printf("%d. %s\n",
-                        "Exit".equals(mainMenuOptions.get(i)) ? 0 : i + 1,
+                        EXIT_OPTION.equals(mainMenuOptions.get(i)) ? 0 : i + 1,
                         mainMenuOptions.get(i)));
     }
 }
