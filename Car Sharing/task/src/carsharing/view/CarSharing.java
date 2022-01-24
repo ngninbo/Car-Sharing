@@ -26,9 +26,7 @@ public class CarSharing {
     private CompanyController companyController;
     private CarController carController;
     private CustomerController customerController;
-    private boolean goBack = false;
     private boolean exit = false;
-    boolean exitCustomerMenu = false;
     private final String databaseFilename;
 
 
@@ -57,7 +55,6 @@ public class CarSharing {
 
     public void start() {
 
-
         do {
             CarSharingUtil.displayMainMenu();
             Scanner scanner = new Scanner(System.in);
@@ -81,6 +78,7 @@ public class CarSharing {
 
     private void logInAsManager() {
 
+        boolean goBack = false;
         do {
             System.out.println();
             CarSharingUtil.printOptions(managerMenuOptions);
@@ -95,7 +93,7 @@ public class CarSharing {
                     companyController.createCompany();
                     break;
                 case 0:
-                    navBack();
+                    goBack = navBack();
             }
         } while (!goBack);
     }
@@ -128,7 +126,7 @@ public class CarSharing {
 
                         switch (selection) {
                             case 1:
-                                exitCustomerMenu = rentACar(customers.get(customerIndex).getId());
+                                rentACar(customers.get(customerIndex).getId());
                                 break;
                             case 2:
                                 customerController.returnRentedCar(customers.get(customerIndex).getId());
@@ -137,8 +135,7 @@ public class CarSharing {
                                 showMyRentedCar(customers.get(customerIndex).getId());
                                 break;
                             case 0:
-                                goToMainMenu = true;
-                                System.out.println();
+                                goToMainMenu = navBack();
                                 break;
                         }
                     }
@@ -156,16 +153,13 @@ public class CarSharing {
         if (rentedCarId == 0) {
             System.out.println(CUSTOMER_CAR_NOT_RENT_INFO);
         } else {
-            System.out.println(CUSTOMER_RENT_CAR_INFO);
             Car car = carController.findById(rentedCarId);
-            System.out.println(car.getName());
-            System.out.println(COMPANY_LABEL);
-            System.out.println(companyController.findCompanyById(car.getCompanyId()).getName());
+            String companyName = companyController.findCompanyById(car.getCompanyId()).getName();
+            System.out.printf(CUSTOMER_RENTED_CAR_INFO, car.getName(), companyName);
         }
     }
 
-    private boolean rentACar(int customerId) {
-        boolean goBack = false;
+    private void rentACar(int customerId) {
         List<Company> companies = companyController.findAll();
         Customer customer = customerController.findById(customerId);
         if (companies.isEmpty()) {
@@ -176,20 +170,13 @@ public class CarSharing {
             CarSharingUtil.printOptions(COMPANY_CHOICE_COMMAND, companies, true);
 
             int companyIndex = new Scanner(System.in).nextInt() - 1;
-            if (companyIndex == -1) {
-                return true;
-            } else {
-
+            if (companyIndex != -1) {
                 List<Car> cars = carController.findCarByCompanyId(companies.get(companyIndex).getId());
                 List<Car> availableCars = getAvailableCars(cars);
 
-                goBack = customerController.rentCar(
-                        customerId,
-                        companies.get(companyIndex).getName(),
-                        availableCars);
+                customerController.rentCar(customerId, companies.get(companyIndex).getName(), availableCars);
             }
         }
-        return goBack;
     }
 
 
@@ -235,8 +222,8 @@ public class CarSharing {
                 .collect(Collectors.toList());
     }
 
-    private void navBack() {
-        goBack = true;
+    private boolean navBack() {
         System.out.println();
+        return true;
     }
 }

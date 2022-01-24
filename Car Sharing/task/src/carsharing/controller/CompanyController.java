@@ -21,7 +21,7 @@ public class CompanyController {
         return companyDao.findAll();
     }
 
-    public void save(String name) {
+    private void save(String name) {
         companyDao.update(name);
     }
 
