@@ -1,0 +1,20 @@
+content:
+- String
+- Declaring a method
+- Files
+- Function composition
+- Comparator
+- Functional data processing with streams
+- Stream filtering
+- Map and flatMap
+- Reduction methods
+- Collectors
+- Functional decomposition
+- Streams of primitives
+- Taking elements
+- Integer types and operations
+- Infinite streams
+- Stream pipelines
+- Branching statements
+- Parallel streams
+- Grouping collectors
