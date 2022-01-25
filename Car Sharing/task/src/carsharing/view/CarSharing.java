@@ -17,6 +17,7 @@ import carsharing.util.CarSharingUtil;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import static carsharing.util.CarSharingConstants.*;
@@ -216,9 +217,10 @@ public class CarSharing {
                 .distinct()
                 .collect(Collectors.toList());
 
+        Predicate<Car> isRented = car -> list.stream().noneMatch(integer -> car.getId() == integer);
         return cars
                 .stream()
-                .filter(car -> !list.contains(car.getId()))
+                .filter(isRented)
                 .collect(Collectors.toList());
     }
 
