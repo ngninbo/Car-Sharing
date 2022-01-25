@@ -146,10 +146,8 @@ public class CarSharing {
 
             int companyIndex = new Scanner(System.in).nextInt() - 1;
             if (companyIndex != -1) {
-                List<Car> cars = carController.findCarByCompanyId(companies.get(companyIndex).getId());
-                List<Car> availableCars = getAvailableCars(cars);
-
-                customerController.rentCar(customerId, companies.get(companyIndex).getName(), availableCars);
+                List<Car> cars = getAvailableCars(companies.get(companyIndex).getId());
+                customerController.rentCar(customerId, companies.get(companyIndex).getName(), cars);
             }
         }
     }
@@ -183,16 +181,18 @@ public class CarSharing {
         }
     }
 
+    private List<Car> getAvailableCars(int companyId) {
 
-    private List<Car> getAvailableCars(List<Car> cars) {
         List<Customer> customers = customerController.findAll();
-        List<Integer> list = customers.stream()
+
+        List<Integer> rentedCarIds = customers.stream()
                 .map(Customer::getRentedCarId)
                 .distinct()
                 .collect(Collectors.toList());
 
-        Predicate<Car> isAvailable = car -> list.stream().noneMatch(integer -> car.getId() == integer);
-        return cars
+        Predicate<Car> isAvailable = car -> rentedCarIds.stream().allMatch(integer -> car.getId() != integer);
+
+        return carController.findCarByCompanyId(companyId)
                 .stream()
                 .filter(isAvailable)
                 .collect(Collectors.toList());
