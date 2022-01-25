@@ -51,4 +51,21 @@ public class CarSharingUtil {
                         EXIT_OPTION.equals(mainMenuOptions.get(i)) ? 0 : i + 1,
                         mainMenuOptions.get(i)));
     }
+
+    public static void println(String text) {
+        System.out.println(text);
+    }
+
+    public static void printf(String textWithPlaceholder, String secondText, String lastText) {
+        System.out.printf(textWithPlaceholder, secondText, lastText);
+    }
+
+    public static void printf(String textWithPlaceholder, String text) {
+        System.out.printf(textWithPlaceholder, text);
+    }
+
+    public static boolean println() {
+        System.out.println();
+        return true;
+    }
 }

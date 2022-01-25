@@ -94,7 +94,7 @@ public class CarSharing {
                     companyController.createCompany();
                     break;
                 case 0:
-                    goBack = navBack();
+                    goBack = CarSharingUtil.println();
             }
         } while (!goBack);
     }
@@ -115,8 +115,7 @@ public class CarSharing {
                 int customerIndex = new Scanner(System.in).nextInt() - 1;
 
                 if (customerIndex == -1) {
-                    goToMainMenu = true;
-                    System.out.println();
+                    goToMainMenu = CarSharingUtil.println();
                 } else {
 
                     while (!goToMainMenu) {
@@ -136,7 +135,7 @@ public class CarSharing {
                                 showMyRentedCar(customers.get(customerIndex).getId());
                                 break;
                             case 0:
-                                goToMainMenu = navBack();
+                                goToMainMenu = CarSharingUtil.println();
                                 break;
                         }
                     }
@@ -152,11 +151,11 @@ public class CarSharing {
         final int rentedCarId = customer.getRentedCarId();
 
         if (rentedCarId == 0) {
-            System.out.println(CUSTOMER_CAR_NOT_RENT_INFO);
+            CarSharingUtil.println(CUSTOMER_CAR_NOT_RENT_INFO);
         } else {
             Car car = carController.findById(rentedCarId);
             String companyName = companyController.findCompanyById(car.getCompanyId()).getName();
-            System.out.printf(CUSTOMER_RENTED_CAR_INFO, car.getName(), companyName);
+            CarSharingUtil.printf(CUSTOMER_RENTED_CAR_INFO, car.getName(), companyName);
         }
     }
 
@@ -164,9 +163,9 @@ public class CarSharing {
         List<Company> companies = companyController.findAll();
         Customer customer = customerController.findById(customerId);
         if (companies.isEmpty()) {
-            System.out.println(COMPANY_LIST_EMPTY_INFO);
+            CarSharingUtil.println(COMPANY_LIST_EMPTY_INFO);
         } else if (customer.getRentedCarId() > 0) {
-            System.out.println(CUSTOMER_CAR_ALREADY_RENT_INFO);
+            CarSharingUtil.println(CUSTOMER_CAR_ALREADY_RENT_INFO);
         } else {
             CarSharingUtil.printOptions(COMPANY_CHOICE_COMMAND, companies, true);
 
@@ -185,7 +184,7 @@ public class CarSharing {
         List<Company> companies = companyController.findAll();
 
         if (companies.isEmpty()) {
-            System.out.println(COMPANY_LIST_EMPTY_INFO);
+            CarSharingUtil.println(COMPANY_LIST_EMPTY_INFO);
         } else {
 
             boolean goToManagerMenu = false;
@@ -197,7 +196,7 @@ public class CarSharing {
                 if (companyIndex == -1) {
                     goToManagerMenu = true;
                 } else {
-                    System.out.printf(COMPANY_NAME_LABEL, companies.get(companyIndex).getName());
+                    CarSharingUtil.printf(COMPANY_NAME_LABEL, companies.get(companyIndex).getName());
 
                     while (!goToManagerMenu) {
                         CarSharingUtil.printOptions(carMenuOptions);
@@ -222,10 +221,5 @@ public class CarSharing {
                 .stream()
                 .filter(isAvailable)
                 .collect(Collectors.toList());
-    }
-
-    private boolean navBack() {
-        System.out.println();
-        return true;
     }
 }

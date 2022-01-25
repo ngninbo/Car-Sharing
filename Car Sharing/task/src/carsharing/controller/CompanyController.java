@@ -2,6 +2,7 @@ package carsharing.controller;
 
 import carsharing.model.Company;
 import carsharing.service.CompanyDao;
+import carsharing.util.CarSharingUtil;
 
 import java.util.List;
 import java.util.Scanner;
@@ -30,9 +31,9 @@ public class CompanyController {
     }
 
     public void createCompany() {
-        System.out.println(COMPANY_NAME_INPUT_COMMAND);
+        CarSharingUtil.println(COMPANY_NAME_INPUT_COMMAND);
         String name = new Scanner(System.in).nextLine();
         this.save(name);
-        System.out.println(COMPANY_CREATION_SUCCEED_MSG);
+        CarSharingUtil.println(COMPANY_CREATION_SUCCEED_MSG);
     }
 }

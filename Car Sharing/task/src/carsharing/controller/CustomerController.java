@@ -33,13 +33,13 @@ public class CustomerController {
 
     public void rentCar(int customerId, String companyName, List<Car> cars) {
         if (cars.isEmpty()) {
-            System.out.printf(CAR_IN_COMPANY_NO_AVAILABLE_INFO, companyName);
+            CarSharingUtil.printf(CAR_IN_COMPANY_NO_AVAILABLE_INFO, companyName);
         } else {
             CarSharingUtil.printOptions(CUSTOMER_CAR_CHOICE_COMMAND, cars, true);
             int carIndex = new Scanner(System.in).nextInt() - 1;
             if (carIndex != -1) {
                 this.updateWhenRent(customerId, cars.get(carIndex).getId());
-                System.out.printf(CUSTOMER_RENT_CAR_NAME_INFO, cars.get(carIndex).getName());
+                CarSharingUtil.printf(CUSTOMER_RENT_CAR_NAME_INFO, cars.get(carIndex).getName());
             }
         }
     }
@@ -48,18 +48,18 @@ public class CustomerController {
         Customer customer = this.findById(id);
 
         if (customer.getRentedCarId() == 0) {
-            System.out.println(CUSTOMER_CAR_NOT_RENT_INFO);
+            CarSharingUtil.println(CUSTOMER_CAR_NOT_RENT_INFO);
         } else {
             this.updateWhenReturn(customer.getId());
-            System.out.println(CUSTOMER_RENT_CAR_RETURN_SUCCEED_MSG);
+            CarSharingUtil.println(CUSTOMER_RENT_CAR_RETURN_SUCCEED_MSG);
         }
     }
 
     public void createCustomer() {
-        System.out.println(CUSTOMER_NAME_INPUT_COMMAND);
+        CarSharingUtil.println(CUSTOMER_NAME_INPUT_COMMAND);
         String name = new Scanner(System.in).nextLine();
         this.update(name);
-        System.out.println(CUSTOMER_CREATION_SUCCEED_MSG);
+        CarSharingUtil.println(CUSTOMER_CREATION_SUCCEED_MSG);
     }
 
     private void updateWhenReturn(int id) {

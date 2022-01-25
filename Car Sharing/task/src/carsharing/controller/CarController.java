@@ -30,19 +30,19 @@ public class CarController {
         return carDao.findById(rentedCarId);
     }
 
-    public void createCar(int companyId) {
-        System.out.println(CAR_NAME_INPUT_COMMAND);
+    private void createCar(int companyId) {
+        CarSharingUtil.println(CAR_NAME_INPUT_COMMAND);
         String name = new Scanner(System.in).nextLine();
         boolean saveSucceed = this.save(name, companyId);
         if (saveSucceed) {
-            System.out.println(CAR_CREATION_SUCCEED_MSG);
+            CarSharingUtil.println(CAR_CREATION_SUCCEED_MSG);
         }
     }
 
-    public void showCarList(int companyId) {
+    private void showCarList(int companyId) {
         List<Car> cars = this.findCarByCompanyId(companyId);
         if (cars.isEmpty()) {
-            System.out.println(CAR_LIST_EMPTY_INFO);
+            CarSharingUtil.println(CAR_LIST_EMPTY_INFO);
         } else {
             CarSharingUtil.printOptions(CAR_LIST_OVERVIEW_LABEL, cars, false);
             System.out.println();
