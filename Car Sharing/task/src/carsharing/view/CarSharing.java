@@ -6,13 +6,6 @@ import carsharing.controller.CustomerController;
 import carsharing.model.Car;
 import carsharing.model.Company;
 import carsharing.model.Customer;
-import carsharing.repository.BaseRepository;
-import carsharing.repository.CarRepository;
-import carsharing.repository.CompanyRepository;
-import carsharing.repository.CustomerRepository;
-import carsharing.service.CarDaoImpl;
-import carsharing.service.CompanyDaoImpl;
-import carsharing.service.CustomerDaoImpl;
 import carsharing.util.CarSharingUtil;
 
 import java.util.List;
@@ -24,34 +17,16 @@ import static carsharing.util.CarSharingConstants.*;
 
 public class CarSharing {
 
-    private CompanyController companyController;
-    private CarController carController;
-    private CustomerController customerController;
+    private final CompanyController companyController;
+    private final CarController carController;
+    private final CustomerController customerController;
     private boolean exit = false;
-    private final String databaseFilename;
 
-
-    private CarSharing(String databaseFilename) {
-        this.databaseFilename = databaseFilename != null ? databaseFilename : "carSharing";
-    }
-
-    public static CarSharing init(String databaseFilename) {
-        return new CarSharing(databaseFilename);
-    }
-
-    public CarSharing createDatabaseTable() {
-        BaseRepository.createDatabaseTable(databaseFilename);
-        return this;
-    }
-
-    public CarSharing build() {
-
-        companyController = new CompanyController(new CompanyDaoImpl(CompanyRepository.init(databaseFilename)));
-
-        carController = new CarController(new CarDaoImpl(CarRepository.init(databaseFilename)));
-
-        customerController = new CustomerController(new CustomerDaoImpl(CustomerRepository.init(databaseFilename)));
-        return this;
+    public CarSharing(CompanyController companyController, CarController carController,
+                      CustomerController customerController) {
+        this.companyController = companyController;
+        this.carController = carController;
+        this.customerController = customerController;
     }
 
     public void start() {

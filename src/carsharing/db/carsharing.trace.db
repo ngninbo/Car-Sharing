@@ -1,0 +1,4 @@
+2022-01-25 15:54:26 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabelle "COMPANY" nicht gefunden
+Table "COMPANY" not found; SQL statement:
+SELECT * FROM COMPANY ORDER BY ID ASC; [42102-200]

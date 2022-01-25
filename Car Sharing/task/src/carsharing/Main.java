@@ -1,13 +1,17 @@
 package carsharing;
 
-import carsharing.view.CarSharing;
+import carsharing.view.CarSharingBuilder;
 
 public class Main {
 
     public static void main(String[] args) {
-        
-        CarSharing.init(args[1])
-                .createDatabaseTable()
+
+        new CarSharingBuilder()
+                .init(args[1])
+                .withDatabase()
+                .withCompanyController()
+                .withCarController()
+                .withCustomerController()
                 .build()
                 .start();
     }
