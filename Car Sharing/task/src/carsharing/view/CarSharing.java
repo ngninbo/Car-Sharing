@@ -217,10 +217,10 @@ public class CarSharing {
                 .distinct()
                 .collect(Collectors.toList());
 
-        Predicate<Car> isRented = car -> list.stream().noneMatch(integer -> car.getId() == integer);
+        Predicate<Car> isAvailable = car -> list.stream().noneMatch(integer -> car.getId() == integer);
         return cars
                 .stream()
-                .filter(isRented)
+                .filter(isAvailable)
                 .collect(Collectors.toList());
     }
 
