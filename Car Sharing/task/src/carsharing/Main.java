@@ -6,8 +6,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        new CarSharingBuilder()
-                .init(args[1])
+        CarSharingBuilder.init(args[1])
                 .withDatabase()
                 .withCompanyController()
                 .withCarController()

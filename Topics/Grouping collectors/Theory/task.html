@@ -96,11 +96,6 @@ public class Account {
         );</code></pre> 
   <p>First, we filter the stream to get accounts with the <code class="language-java">BLOCKED</code> status. Then we use the <code class="language-java">teeing</code> collector and pass the <code class="language-java">counting</code> collector and the <code class="language-java">summingLong</code> collector to it to get the count of the filtered items and the sum of their balances. After that, we put the results of the downstream collectors to an array, which after the stream is processed will contain the following values: <code class="language-java">[2, 60000].</code></p> 
   <p>In a similar way, we can use the teeing collector to return any two values from a single stream.</p> 
-  <p></p>
-  <div class="alert alert-primary">
-   This feature was added in Java 12, but our platform does not yet support this version of Java. This means that you cannot yet use the teeing collector to solve code challenges in the Code Editor on our website but you can use it in your IDE if your JVM version is 12 or higher.
-  </div>
-  <p></p> 
   <h5>Conclusion</h5> 
   <p>To divide stream elements into exactly two groups based on a specified condition, we can use <code class="language-java">Collectors.partitioningBy</code> collector. It accepts a predicate and produces a <code class="language-java">Map</code> with <code class="language-java">Boolean</code> keys and <code class="language-java">List</code> values. If we need to divide stream elements into more than two groups, we can use <code class="language-java">Collectors.groupingBy</code> collector. It accepts a classification function and groups elements according to it. The <code class="language-java">groupingBy</code> also produces a <code class="language-java">Map</code> with <code class="language-java">Lists</code> values and keys whose type is a return type of the classification function. Both collectors can take a predicate or a classification function accordingly and a downstream collector that is applied to the results of partitioning or grouping.</p>
  </body>

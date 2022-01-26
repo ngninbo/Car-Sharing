@@ -16,11 +16,14 @@ public class CarSharingBuilder {
     private CompanyController companyController;
     private CarController carController;
     private CustomerController customerController;
-    private String databaseFilename;
+    private final String databaseFilename;
 
-    public CarSharingBuilder init(String databaseFilename) {
+    private CarSharingBuilder(String databaseFilename) {
         this.databaseFilename = databaseFilename != null ? databaseFilename : "carSharing";
-        return this;
+    }
+
+    public static CarSharingBuilder init(String databaseFilename) {
+        return new CarSharingBuilder(databaseFilename);
     }
 
     public CarSharingBuilder withDatabase() {
