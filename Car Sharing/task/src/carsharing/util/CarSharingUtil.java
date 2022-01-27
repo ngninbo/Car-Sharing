@@ -27,7 +27,7 @@ public class CarSharingUtil {
                         name = (String) list.get(i);
                     }
 
-                    System.out.printf("%d. %s\n", i + 1, name);
+                    System.out.printf(FORMATED_OPTION, i + 1, name);
                 });
 
         if (showBackOption) {
@@ -37,7 +37,7 @@ public class CarSharingUtil {
 
     public static void printOptions(List<String> options) {
         IntStream.range(0, options.size())
-                .forEach(i -> System.out.printf("%d. %s\n",
+                .forEach(i -> System.out.printf(FORMATED_OPTION,
                         BACK_OPTION.equals(options.get(i)) ? 0 : i + 1,
                         options.get(i))
                 );
@@ -47,7 +47,7 @@ public class CarSharingUtil {
     public static void displayMainMenu() {
 
         IntStream.range(0, mainMenuOptions.size())
-                .forEach(i -> System.out.printf("%d. %s\n",
+                .forEach(i -> System.out.printf(FORMATED_OPTION,
                         EXIT_OPTION.equals(mainMenuOptions.get(i)) ? 0 : i + 1,
                         mainMenuOptions.get(i)));
     }
