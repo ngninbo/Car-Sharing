@@ -1,5 +1,7 @@
 package carsharing.repository;
 
+import carsharing.util.CarSharingConstants;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -20,7 +22,7 @@ public abstract class BaseRepository {
     }
 
     public BaseRepository(String databaseFilename) {
-        dbUrl = String.format("jdbc:h2:%s%s", DB_PATH, databaseFilename);
+        dbUrl = String.format(CarSharingConstants.FORMATTED_URL, DB_PATH, databaseFilename);
     }
 
     public String getDbUrl() {
@@ -29,7 +31,7 @@ public abstract class BaseRepository {
 
     public static void createDatabaseTable(String databaseFilename) {
 
-        dbUrl = String.format("jdbc:h2:%s%s", DB_PATH, databaseFilename);
+        dbUrl = String.format(CarSharingConstants.FORMATTED_URL, DB_PATH, databaseFilename);
 
         try (Connection connection = DriverManager.getConnection(dbUrl)) {
 

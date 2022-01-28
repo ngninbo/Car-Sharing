@@ -8,7 +8,8 @@ public class CarSharingConstants {
     public static final String BACK_TXT = "0. Back";
     public static final String BACK_OPTION = "Back";
     public static final String EXIT_OPTION = "Exit";
-    public static final String FORMATED_OPTION = "%d. %s\n";
+    public static final String FORMATTED_OPTION = "%d. %s\n";
+    public static final String FORMATTED_URL = "jdbc:h2:%s%s";
     public static List<String> mainMenuOptions = List.of(
             "Log in as a manager",
             "Log in as a customer",
