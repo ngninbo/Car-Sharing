@@ -4,11 +4,9 @@ import carsharing.model.Car;
 import carsharing.service.CarDao;
 import carsharing.util.CarSharingUtil;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
-
-import static carsharing.util.CarSharingConstants.*;
-import static carsharing.util.CarSharingConstants.CAR_LIST_OVERVIEW_LABEL;
 
 public class CarController {
 
@@ -30,26 +28,27 @@ public class CarController {
         return carDao.findById(rentedCarId);
     }
 
-    private void createCar(int companyId) {
-        CarSharingUtil.println(CAR_NAME_INPUT_COMMAND);
+    private void createCar(int companyId) throws IOException {
+        CarSharingUtil.println("CAR_NAME_INPUT_COMMAND");
         String name = new Scanner(System.in).nextLine();
         boolean saveSucceed = this.save(name, companyId);
         if (saveSucceed) {
-            CarSharingUtil.println(CAR_CREATION_SUCCEED_MSG);
-        }
-    }
-
-    private void showCarList(int companyId) {
-        List<Car> cars = this.findCarByCompanyId(companyId);
-        if (cars.isEmpty()) {
-            CarSharingUtil.println(CAR_LIST_EMPTY_INFO);
-        } else {
-            CarSharingUtil.printOptions(CAR_LIST_OVERVIEW_LABEL, cars, false);
+            CarSharingUtil.println("CAR_CREATION_SUCCEED_MSG");
             System.out.println();
         }
     }
 
-    public boolean handleInput(int companyId, int choice) {
+    private void showCarList(int companyId) throws IOException {
+        List<Car> cars = this.findCarByCompanyId(companyId);
+        if (cars.isEmpty()) {
+            CarSharingUtil.println("CAR_LIST_EMPTY_INFO");
+        } else {
+            CarSharingUtil.printOptions("CAR_LIST_OVERVIEW_LABEL", cars, false);
+            System.out.println();
+        }
+    }
+
+    public boolean handleInput(int companyId, int choice) throws IOException {
         boolean isTrue = false;
         switch (choice) {
             case 1:

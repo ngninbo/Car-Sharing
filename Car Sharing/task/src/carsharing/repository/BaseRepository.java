@@ -1,56 +1,43 @@
 package carsharing.repository;
 
-import carsharing.util.CarSharingConstants;
+import carsharing.util.PropertiesLoader;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.io.IOException;
+import java.util.List;
+import java.util.Properties;
 
-import static carsharing.util.CarSharingSqlStatement.*;
+public abstract class BaseRepository<T> {
 
-public abstract class BaseRepository {
-
-    private static String dbUrl = null;
+    private final String dbUrl;
+    private static Properties queryProperties;
+    public abstract T findById(int id);
+    public abstract List<T> findAll();
 
     static {
         try {
-            Class.forName(JDBC_DRIVER);
-        } catch (ClassNotFoundException e) {
+            queryProperties = PropertiesLoader.loadProperties("query.properties");
+            Class.forName(getQueryFromKey("JDBC_DRIVER"));
+        } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
         }
     }
 
     public BaseRepository(String databaseFilename) {
-        dbUrl = String.format(CarSharingConstants.FORMATTED_URL, DB_PATH, databaseFilename);
+        dbUrl = getPath(databaseFilename);
     }
 
     public String getDbUrl() {
         return dbUrl;
     }
 
-    public static void createDatabaseTable(String databaseFilename) {
+    public static String getQueryFromKey(String queryKey) {
+        return queryProperties.getProperty(queryKey);
+    }
 
-        dbUrl = String.format(CarSharingConstants.FORMATTED_URL, DB_PATH, databaseFilename);
-
-        try (Connection connection = DriverManager.getConnection(dbUrl)) {
-
-            connection.setAutoCommit(false);
-
-            Statement statement = connection.createStatement();
-            statement.executeUpdate(TABLE_COMPANY_CREATION_WHEN_NOT_EXISTS_QUERY);
-
-            statement = connection.createStatement();
-            statement.executeUpdate(TABLE_CAR_CREATION_WHEN_NOT_EXITS_QUERY);
-
-            statement = connection.createStatement();
-            statement.executeUpdate(TABLE_CUSTOMER_CREATION_WHEN_NOT_EXISTS_QUERY);
-
-            statement.close();
-            connection.commit();
-
-        } catch (SQLException sqlEx) {
-            sqlEx.printStackTrace();
-        }
+    public static String getPath(String databaseFilename) {
+        return String.format(
+                getQueryFromKey("FORMATTED_URL"),
+                getQueryFromKey("DB_PATH"),
+                databaseFilename);
     }
 }

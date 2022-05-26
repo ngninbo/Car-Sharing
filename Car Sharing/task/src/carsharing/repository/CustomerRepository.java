@@ -6,9 +6,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static carsharing.util.CarSharingSqlStatement.*;
-
-public class CustomerRepository extends BaseRepository {
+public class CustomerRepository extends BaseRepository<Customer> {
 
     private CustomerRepository(String databaseFilename) {
         super(databaseFilename);
@@ -24,7 +22,7 @@ public class CustomerRepository extends BaseRepository {
 
             connection.setAutoCommit(true);
 
-            PreparedStatement statement = connection.prepareStatement(INSERT_INTO_CUSTOMER_QUERY);
+            PreparedStatement statement = connection.prepareStatement(getQueryFromKey("INSERT_INTO_CUSTOMER_QUERY"));
             statement.setString(1, name);
 
             statement.executeUpdate();
@@ -36,6 +34,7 @@ public class CustomerRepository extends BaseRepository {
         }
     }
 
+    @Override
     public List<Customer> findAll() {
 
         List<Customer> customers = new ArrayList<>();
@@ -43,7 +42,7 @@ public class CustomerRepository extends BaseRepository {
         try (Connection connection = DriverManager.getConnection(getDbUrl())) {
 
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(FIND_ALL_CUSTOMER_QUERY);
+            ResultSet resultSet = statement.executeQuery(getQueryFromKey("FIND_ALL_CUSTOMER_QUERY"));
 
             while (resultSet.next()) {
                 Customer customer = new Customer(
@@ -62,14 +61,15 @@ public class CustomerRepository extends BaseRepository {
         return customers;
     }
 
-    public Customer findBy(int id) {
+    @Override
+    public Customer findById(int id) {
 
         Customer customer = null;
 
         try (Connection connection = DriverManager.getConnection(getDbUrl())) {
 
             connection.setAutoCommit(true);
-            PreparedStatement preparedStatement = connection.prepareStatement(FIND_CUSTOMER_BY_ID_QUERY);
+            PreparedStatement preparedStatement = connection.prepareStatement(getQueryFromKey("FIND_CUSTOMER_BY_ID_QUERY"));
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -90,7 +90,7 @@ public class CustomerRepository extends BaseRepository {
 
         try (Connection connection = DriverManager.getConnection(getDbUrl())) {
             connection.setAutoCommit(true);
-            PreparedStatement statement = connection.prepareStatement(UPDATE_CUSTOMER_WHEN_RENT_CAR_RETURN_QUERY);
+            PreparedStatement statement = connection.prepareStatement(getQueryFromKey("UPDATE_CUSTOMER_WHEN_RENT_CAR_RETURN_QUERY"));
             statement.setInt(1, id);
             statement.executeUpdate();
             statement.close();
@@ -104,7 +104,7 @@ public class CustomerRepository extends BaseRepository {
         try (Connection connection = DriverManager.getConnection(getDbUrl())) {
 
             connection.setAutoCommit(true);
-            PreparedStatement statement = connection.prepareStatement(UPDATE_CUSTOMER_WHEN_CAR_RENT_QUERY);
+            PreparedStatement statement = connection.prepareStatement(getQueryFromKey("UPDATE_CUSTOMER_WHEN_CAR_RENT_QUERY"));
             statement.setInt(1, rentedCarId);
             statement.setInt(2, customerId);
 

@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 import java.util.Scanner;
 
 class CollectorProduct {
@@ -10,12 +9,8 @@ class CollectorProduct {
 
         String[] values = scanner.nextLine().split(" ");
 
-        List<Integer> numbers = new ArrayList<>();
-        for (String val : values) {
-            numbers.add(Integer.parseInt(val));
-        }
-
-        long val = numbers.stream()
+        long val = Arrays.stream(values)
+                .map(Integer::parseInt)
                 .reduce(1, (prod, next) -> prod *= next * next);
 
         System.out.println(val);

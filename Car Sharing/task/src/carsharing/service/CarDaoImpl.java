@@ -33,5 +33,4 @@ public class CarDaoImpl implements CarDao {
     public Car findById(int rentedCarId) {
         return carRepository.findById(rentedCarId);
     }
-
 }

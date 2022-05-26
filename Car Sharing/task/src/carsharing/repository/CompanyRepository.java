@@ -6,9 +6,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static carsharing.util.CarSharingSqlStatement.*;
-
-public class CompanyRepository extends BaseRepository {
+public class CompanyRepository extends BaseRepository<Company> {
 
     private CompanyRepository(String databaseFilename) {
         super(databaseFilename);
@@ -18,6 +16,7 @@ public class CompanyRepository extends BaseRepository {
         return new CompanyRepository(databaseFilename);
     }
 
+    @Override
     public List<Company> findAll() {
 
         List<Company> companies = new ArrayList<>();
@@ -28,7 +27,7 @@ public class CompanyRepository extends BaseRepository {
 
             Statement statement = connection.createStatement();
 
-            ResultSet resultSet = statement.executeQuery(FIND_ALL_COMPANIES_QUERY);
+            ResultSet resultSet = statement.executeQuery(getQueryFromKey("FIND_ALL_COMPANIES_QUERY"));
 
             while (resultSet.next()) {
                 Company company = new Company(resultSet.getInt("id"), resultSet.getString("name"));
@@ -51,7 +50,7 @@ public class CompanyRepository extends BaseRepository {
 
             connection.setAutoCommit(true);
 
-            PreparedStatement statement = connection.prepareStatement(INSERT_INTO_COMPANY_NAME_VALUES_QUERY);
+            PreparedStatement statement = connection.prepareStatement(getQueryFromKey("INSERT_INTO_COMPANY_NAME_VALUES_QUERY"));
             statement.setString(1, name);
 
             statement.executeUpdate();
@@ -63,6 +62,7 @@ public class CompanyRepository extends BaseRepository {
         }
     }
 
+    @Override
     public Company findById(int id) {
 
         Company company = null;
@@ -71,7 +71,7 @@ public class CompanyRepository extends BaseRepository {
 
             connection.setAutoCommit(true);
 
-            PreparedStatement statement = connection.prepareStatement(FIND_COMPANY_BY_ID_QUERY);
+            PreparedStatement statement = connection.prepareStatement(getQueryFromKey("FIND_COMPANY_BY_ID_QUERY"));
             statement.setInt(1, id);
 
             ResultSet resultSet = statement.executeQuery();

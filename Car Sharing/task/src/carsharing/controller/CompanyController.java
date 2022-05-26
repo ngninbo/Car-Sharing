@@ -4,11 +4,9 @@ import carsharing.model.Company;
 import carsharing.service.CompanyDao;
 import carsharing.util.CarSharingUtil;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
-
-import static carsharing.util.CarSharingConstants.COMPANY_CREATION_SUCCEED_MSG;
-import static carsharing.util.CarSharingConstants.COMPANY_NAME_INPUT_COMMAND;
 
 public class CompanyController {
 
@@ -30,10 +28,10 @@ public class CompanyController {
         return companyDao.findById(companyId);
     }
 
-    public void createCompany() {
-        CarSharingUtil.println(COMPANY_NAME_INPUT_COMMAND);
+    public void createCompany() throws IOException {
+        CarSharingUtil.println("COMPANY_NAME_INPUT_COMMAND");
         String name = new Scanner(System.in).nextLine();
         this.save(name);
-        CarSharingUtil.println(COMPANY_CREATION_SUCCEED_MSG);
+        CarSharingUtil.println("COMPANY_CREATION_SUCCEED_MSG");
     }
 }

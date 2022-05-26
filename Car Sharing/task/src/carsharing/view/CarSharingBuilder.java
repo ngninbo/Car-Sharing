@@ -10,6 +10,7 @@ import carsharing.repository.CustomerRepository;
 import carsharing.service.CarDaoImpl;
 import carsharing.service.CompanyDaoImpl;
 import carsharing.service.CustomerDaoImpl;
+import carsharing.util.DatabaseCreation;
 
 public class CarSharingBuilder {
 
@@ -27,7 +28,7 @@ public class CarSharingBuilder {
     }
 
     public CarSharingBuilder withDatabase() {
-        BaseRepository.createDatabaseTable(databaseFilename);
+        DatabaseCreation.createDatabaseTable(databaseFilename);
         return this;
     }
 

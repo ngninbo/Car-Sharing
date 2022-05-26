@@ -31,7 +31,7 @@ public class CustomerDaoImpl implements CustomerDao {
 
     @Override
     public Customer findById(int id) {
-        return customerRepository.findBy(id);
+        return customerRepository.findById(id);
     }
 
     @Override

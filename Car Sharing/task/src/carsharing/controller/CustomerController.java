@@ -5,10 +5,9 @@ import carsharing.model.Customer;
 import carsharing.service.CustomerDao;
 import carsharing.util.CarSharingUtil;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
-
-import static carsharing.util.CarSharingConstants.*;
 
 public class CustomerController {
 
@@ -31,35 +30,37 @@ public class CustomerController {
     }
 
 
-    public void rentCar(int customerId, String companyName, List<Car> cars) {
+    public void rentCar(int customerId, String companyName, List<Car> cars) throws IOException {
         if (cars.isEmpty()) {
-            CarSharingUtil.printf(CAR_IN_COMPANY_NO_AVAILABLE_INFO, companyName);
+            CarSharingUtil.printf("CAR_IN_COMPANY_NO_AVAILABLE_INFO", companyName);
         } else {
-            CarSharingUtil.printOptions(CUSTOMER_CAR_CHOICE_COMMAND, cars, true);
+            CarSharingUtil.printOptions("CUSTOMER_CAR_CHOICE_COMMAND", cars, true);
             int carIndex = new Scanner(System.in).nextInt() - 1;
             if (carIndex != -1) {
                 this.updateWhenRent(customerId, cars.get(carIndex).getId());
-                CarSharingUtil.printf(CUSTOMER_RENT_CAR_NAME_INFO, cars.get(carIndex).getName());
+                CarSharingUtil.printf("CUSTOMER_RENT_CAR_NAME_INFO", cars.get(carIndex).getName());
+                System.out.println();
             }
         }
     }
 
-    public void returnRentedCar(int id) {
+    public void returnRentedCar(int id) throws IOException {
         Customer customer = this.findById(id);
 
         if (customer.getRentedCarId() == 0) {
-            CarSharingUtil.println(CUSTOMER_CAR_NOT_RENT_INFO);
+            CarSharingUtil.println("CUSTOMER_CAR_NOT_RENT_INFO");
         } else {
             this.updateWhenReturn(customer.getId());
-            CarSharingUtil.println(CUSTOMER_RENT_CAR_RETURN_SUCCEED_MSG);
+            CarSharingUtil.println("CUSTOMER_RENT_CAR_RETURN_SUCCEED_MSG");
         }
     }
 
-    public void createCustomer() {
-        CarSharingUtil.println(CUSTOMER_NAME_INPUT_COMMAND);
+    public void createCustomer() throws IOException {
+        CarSharingUtil.println("CUSTOMER_NAME_INPUT_COMMAND");
         String name = new Scanner(System.in).nextLine();
         this.update(name);
-        CarSharingUtil.println(CUSTOMER_CREATION_SUCCEED_MSG);
+        CarSharingUtil.println("CUSTOMER_CREATION_SUCCEED_MSG");
+        System.out.println();
     }
 
     private void updateWhenReturn(int id) {

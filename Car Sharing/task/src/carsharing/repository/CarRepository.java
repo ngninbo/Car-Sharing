@@ -6,9 +6,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static carsharing.util.CarSharingSqlStatement.*;
-
-public class CarRepository extends BaseRepository {
+public class CarRepository extends BaseRepository<Car> {
 
     private CarRepository(String databaseFilename) {
         super(databaseFilename);
@@ -23,7 +21,7 @@ public class CarRepository extends BaseRepository {
         boolean querySucceed = false;
         try (Connection connection = DriverManager.getConnection(getDbUrl())) {
             connection.setAutoCommit(true);
-            PreparedStatement statement = connection.prepareStatement(INSERT_INTO_CAR_QUERY);
+            PreparedStatement statement = connection.prepareStatement(getQueryFromKey("INSERT_INTO_CAR_QUERY"));
             statement.setString(1, name);
             statement.setInt(2, companyId);
             querySucceed = statement.executeUpdate() > 0;
@@ -42,7 +40,7 @@ public class CarRepository extends BaseRepository {
 
         try (Connection connection = DriverManager.getConnection(getDbUrl())) {
 
-            PreparedStatement statement = connection.prepareStatement(FIND_ALL_CARD_BY_COMPANY_ID_QUERY);
+            PreparedStatement statement = connection.prepareStatement(getQueryFromKey("FIND_ALL_CAR_BY_COMPANY_ID_QUERY"));
             statement.setInt(1, companyId);
             ResultSet resultSet = statement.executeQuery();
 
@@ -59,13 +57,14 @@ public class CarRepository extends BaseRepository {
         return cars;
     }
 
+    @Override
     public Car findById(int id) {
 
         Car car = null;
 
         try (Connection connection = DriverManager.getConnection(getDbUrl())) {
 
-            PreparedStatement statement = connection.prepareStatement(FIND_CAR_BY_ID_QUERY);
+            PreparedStatement statement = connection.prepareStatement(getQueryFromKey("FIND_CAR_BY_ID_QUERY"));
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
 
@@ -82,5 +81,10 @@ public class CarRepository extends BaseRepository {
         }
 
         return car;
+    }
+
+    @Override
+    public List<Car> findAll() {
+        return null;
     }
 }

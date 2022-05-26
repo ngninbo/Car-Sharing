@@ -29,3 +29,11 @@ SELECT * FROM CAR WHERE COMPANY_ID = ? AND RENTED_CAR_ID NOT IN(SELECT RENTED_CA
 	at carsharing.view.CarSharing.logInAsCustomer(CarSharing.java:104)
 	at carsharing.view.CarSharing.start(CarSharing.java:44)
 	at carsharing.Main.main(Main.java:16)
+2022-03-09 23:21:28 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax Fehler in SQL Befehl "SELECT ID, NAME FROM CAR WHERE COMPANY_ID = ? JOIN[*] CUSTOMER ON ID = RENTED_CAR_ID ORDER BY ID"
+Syntax error in SQL statement "SELECT ID, NAME FROM CAR WHERE COMPANY_ID = ? JOIN[*] CUSTOMER ON ID = RENTED_CAR_ID ORDER BY ID"; SQL statement:
+SELECT ID, NAME FROM CAR WHERE COMPANY_ID = ? JOIN CUSTOMER ON ID = RENTED_CAR_ID ORDER BY ID [42000-200]
+2022-03-09 23:24:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax Fehler in SQL Befehl "SELECT ID, NAME FROM CAR WHERE COMPANY_ID = ? INNER[*] JOIN CUSTOMER ON ID = RENTED_CAR_ID ORDER BY ID"
+Syntax error in SQL statement "SELECT ID, NAME FROM CAR WHERE COMPANY_ID = ? INNER[*] JOIN CUSTOMER ON ID = RENTED_CAR_ID ORDER BY ID"; SQL statement:
+SELECT ID, NAME FROM CAR WHERE COMPANY_ID = ? INNER JOIN CUSTOMER ON ID = RENTED_CAR_ID ORDER BY ID [42000-200]
