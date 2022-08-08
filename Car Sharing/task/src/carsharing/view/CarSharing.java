@@ -33,7 +33,11 @@ public class CarSharing {
     public void start() throws IOException {
 
         do {
-            CarSharingUtil.displayMainMenu();
+            CarSharingUtil.printOptions(List.of(
+                    "Log in as a manager",
+                    "Log in as a customer",
+                    "Create a customer",
+                    "Exit"));
             Scanner scanner = new Scanner(System.in);
             int userInput = scanner.nextInt();
 
@@ -89,7 +93,8 @@ public class CarSharing {
         } else {
             while (!goToMainMenu) {
 
-                CarSharingUtil.printOptions("CUSTOMER_LIST_LABEL", customers, true);
+                CarSharingUtil.printOptions("CUSTOMER_LIST_LABEL", customers);
+                System.out.printf("%s. %s%n", 0, BACK_OPTION);
 
                 int customerIndex = new Scanner(System.in).nextInt() - 1;
 
@@ -107,15 +112,16 @@ public class CarSharing {
 
                         int selection = new Scanner(System.in).nextInt();
 
+                        int customerId = customers.get(customerIndex).getId();
                         switch (selection) {
                             case 1:
-                                rentACar(customers.get(customerIndex).getId());
+                                rentACar(customerId);
                                 break;
                             case 2:
-                                customerController.returnRentedCar(customers.get(customerIndex).getId());
+                                customerController.returnRentedCar(customerId);
                                 break;
                             case 3:
-                                showMyRentedCar(customers.get(customerIndex).getId());
+                                showMyRentedCar(customerId);
                                 break;
                             case 0:
                                 goToMainMenu = CarSharingUtil.println();
@@ -151,7 +157,8 @@ public class CarSharing {
         } else if (customer.getRentedCarId() > 0) {
             CarSharingUtil.println("CUSTOMER_CAR_ALREADY_RENT_INFO");
         } else {
-            CarSharingUtil.printOptions("COMPANY_CHOICE_COMMAND", companies, true);
+            CarSharingUtil.printOptions("COMPANY_CHOICE_COMMAND", companies);
+            System.out.printf("%s. %s%n", 0, BACK_OPTION);
 
             int companyIndex = new Scanner(System.in).nextInt() - 1;
             if (companyIndex != -1) {
@@ -171,23 +178,25 @@ public class CarSharing {
             boolean goToManagerMenu = false;
 
             while (!goToManagerMenu) {
-                CarSharingUtil.printOptions("COMPANY_CHOICE_COMMAND", companies, true);
+                CarSharingUtil.printOptions("COMPANY_CHOICE_COMMAND", companies);
+                System.out.printf("%s. %s%n", 0, BACK_OPTION);
                 int companyIndex = new Scanner(System.in).nextInt() - 1;
 
                 if (companyIndex == -1) {
                     goToManagerMenu = true;
                 } else {
-                    CarSharingUtil.printf("COMPANY_NAME_LABEL", companies.get(companyIndex).getName());
+                    Company company = companies.get(companyIndex);
+                    CarSharingUtil.printf("COMPANY_NAME_LABEL", company.getName());
                     System.out.println();
 
-                    while (!goToManagerMenu) {
+                    do {
                         CarSharingUtil.printOptions(List.of(
                                 "Car list",
                                 "Create a car",
                                 BACK_OPTION));
                         int choice = new Scanner(System.in).nextInt();
-                        goToManagerMenu = carController.handleInput(companies.get(companyIndex).getId(), choice);
-                    }
+                        goToManagerMenu = carController.handleInput(company.getId(), choice);
+                    } while (!goToManagerMenu);
                 }
             }
         }

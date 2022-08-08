@@ -43,7 +43,7 @@ public class CarController {
         if (cars.isEmpty()) {
             CarSharingUtil.println("CAR_LIST_EMPTY_INFO");
         } else {
-            CarSharingUtil.printOptions("CAR_LIST_OVERVIEW_LABEL", cars, false);
+            CarSharingUtil.printOptions("CAR_LIST_OVERVIEW_LABEL", cars);
             System.out.println();
         }
     }

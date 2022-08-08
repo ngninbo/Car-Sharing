@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
+import static carsharing.util.CarSharingConstants.BACK_OPTION;
+
 public class CustomerController {
 
     private final CustomerDao customerDao;
@@ -34,7 +36,8 @@ public class CustomerController {
         if (cars.isEmpty()) {
             CarSharingUtil.printf("CAR_IN_COMPANY_NO_AVAILABLE_INFO", companyName);
         } else {
-            CarSharingUtil.printOptions("CUSTOMER_CAR_CHOICE_COMMAND", cars, true);
+            CarSharingUtil.printOptions("CUSTOMER_CAR_CHOICE_COMMAND", cars);
+            System.out.printf("%s. %s%n", 0, BACK_OPTION);
             int carIndex = new Scanner(System.in).nextInt() - 1;
             if (carIndex != -1) {
                 this.updateWhenRent(customerId, cars.get(carIndex).getId());

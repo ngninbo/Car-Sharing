@@ -14,7 +14,7 @@ public class CarSharingUtil {
 
     public static final String FORMATTED_OPTION = "%d. %s\n";
 
-    public static <T> void printOptions(String key, List<T> list, boolean showBackOption) throws IOException {
+    public static <T> void printOptions(String key, List<T> list) throws IOException {
         System.out.println(getText(key));
         IntStream
                 .range(0, list.size())
@@ -32,32 +32,14 @@ public class CarSharingUtil {
 
                     System.out.printf(FORMATTED_OPTION, i + 1, name);
                 });
-
-        if (showBackOption) {
-            System.out.printf("%s. %s%n", 0, BACK_OPTION);
-        }
     }
 
     public static void printOptions(List<String> options) {
         IntStream.range(0, options.size())
                 .forEach(i -> System.out.printf(FORMATTED_OPTION,
-                        BACK_OPTION.equals(options.get(i)) ? 0 : i + 1,
+                        BACK_OPTION.equals(options.get(i)) || EXIT_OPTION.equals(options.get(i)) ? 0 : i + 1,
                         options.get(i))
                 );
-    }
-
-    public static void displayMainMenu() {
-
-        List<String> mainMenuOptions = List.of(
-                "Log in as a manager",
-                "Log in as a customer",
-                "Create a customer",
-                "Ext");
-
-        IntStream.range(0, mainMenuOptions.size())
-                .forEach(i -> System.out.printf(FORMATTED_OPTION,
-                        "Exit".equals(mainMenuOptions.get(i)) ? 0 : i + 1,
-                        mainMenuOptions.get(i)));
     }
 
     public static void println(String messageKey) throws IOException {
