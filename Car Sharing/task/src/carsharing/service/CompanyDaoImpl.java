@@ -30,7 +30,7 @@ public class CompanyDaoImpl implements CompanyDao {
     }
 
     @Override
-    public void update(String name) {
+    public void save(String name) {
         companyRepository.save(name);
     }
 }

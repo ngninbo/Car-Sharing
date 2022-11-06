@@ -27,8 +27,8 @@ System.out.println(numberOfWords); // 3</code></pre>
   <div class="alert alert-primary">
    If you use 
    <strong>IntelliJ IDEA</strong> as your primary IDE and would like to visualize stream pipelines, you can 
-   <a target="_blank" href="https://www.jetbrains.com/help/idea/analyze-java-stream-operations.html" rel="noopener noreferrer nofollow">read this article</a> and install 
-   <a target="_blank" href="https://plugins.jetbrains.com/plugin/9696-java-stream-debugger" rel="noopener noreferrer nofollow">the Java Stream Debugger plugin</a>.
+   <a href="https://www.jetbrains.com/help/idea/analyze-java-stream-operations.html" rel="noopener noreferrer nofollow" target="_blank">read this article</a> and install 
+   <a href="https://plugins.jetbrains.com/plugin/9696-java-stream-debugger" rel="noopener noreferrer nofollow" target="_blank">the Java Stream Debugger plugin</a>.
   </div>
   <p></p> 
   <p>It is obvious, that the result is 3 because the list contains only three suitable words (<code class="language-java">"JAR"</code>, <code class="language-java">"Java"</code>, <code class="language-java">"jakarta"</code>).</p> 
@@ -36,7 +36,7 @@ System.out.println(numberOfWords); // 3</code></pre>
   <p>But there is also one less obvious thing in the case of the previous example: the order of operations in this stream. It seems that the <code class="language-java">filter</code> operation is only called after the <code class="language-java">map</code> operation has converted all the elements to the upper case. But that is not always true. We can see it by ourselves by adding the <code class="language-java">peek</code> operation to print the intermediate elements of the stream.</p> 
   <p></p>
   <div class="alert alert-primary">
-   <a target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#peek-java.util.function.Consumer-" rel="noopener noreferrer nofollow">As Javadoc says</a>, the 
+   <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#peek-java.util.function.Consumer-" rel="noopener noreferrer nofollow" target="_blank">As Javadoc says</a>, the 
    <code class="language-java">peek</code> method exists mainly to support debugging, where you want to see the elements as they flow past a certain point in a pipeline. Do not forget to remove it after debugging is completed.
   </div>
   <p></p> 

@@ -3,8 +3,11 @@ import java.util.Scanner;
 public class Main {
 
     public static long factorial(long n) {
-        // write your code here
-        return n < 1 ? 1L : n * factorial(n - 1);
+        if (n == 0) {
+            return 1;
+        } else {
+            return n * factorial(n - 1);
+        }
     }
 
     /* Do not change code below */

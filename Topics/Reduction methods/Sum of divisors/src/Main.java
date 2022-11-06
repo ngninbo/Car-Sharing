@@ -17,7 +17,8 @@ public class Main {
     public static int sum(int a, int b, int n, int m) {
         // write your code here
         return IntStream.rangeClosed(a, b)
-                .filter(value -> value % n == 0 || value % m == 0).sum();
+                .filter(value -> value % n == 0 || value % m == 0)
+                .sum();
     }
 
     // Don't change the code below

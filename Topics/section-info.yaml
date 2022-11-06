@@ -19,3 +19,12 @@ content:
 - Parallel streams
 - Grouping collectors
 - Arrays as parameters
+- Iterating over arrays
+- Anonymous classes
+- Default methods
+- Lambda expressions
+- Method references
+- Functional interfaces
+- Standard functional interfaces
+- Optional
+- ArrayList

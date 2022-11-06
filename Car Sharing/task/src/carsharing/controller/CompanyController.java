@@ -21,7 +21,7 @@ public class CompanyController {
     }
 
     private void save(String name) {
-        companyDao.update(name);
+        companyDao.save(name);
     }
 
     public Company findCompanyById(int companyId) {

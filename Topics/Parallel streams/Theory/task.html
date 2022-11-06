@@ -7,7 +7,8 @@
   <div class="alert alert-primary">
    Under the hood, parallel streams use 
    <code class="language-java">ForkJoinPool</code> introduced in Java 7 to manage parallel executions.
-  </div> 
+  </div>
+  <p></p> 
   <p>In this topic, you will learn how to create and use parallel streams, as well as learn about the performance and some caveats associated with them.</p> 
   <h5 id="creating-parallel-streams" style="text-align: center;">Creating parallel streams</h5> 
   <p>There are several simple ways to create parallel streams:</p> 
@@ -33,7 +34,8 @@ System.out.println(sum); // 500000500000</code></pre>
   <p></p>
   <div class="alert alert-primary">
    The example shows not the best way to calculate the sum of this sequence, but this is just an example of parallel streams. It is better to use the formula for the sum of n terms in the arithmetic progression.
-  </div> 
+  </div>
+  <p></p> 
   <p>As you can see, despite the fact that we use parallel streams, all the code for working with them remains the same as before.</p> 
   <p>There are two additional methods for working with parallel streams:</p> 
   <ul> 
@@ -47,14 +49,16 @@ System.out.println(sum); // 500000500000</code></pre>
    <strong>sequential</strong>. A mixed mode is impossible. If a stream pipeline calls both 
    <code class="language-java">parallel()</code> and 
    <code class="language-java">sequential()</code> methods, the last call wins.
-  </div> 
+  </div>
+  <p></p> 
   <h5 id="performance-of-parallel-streams" style="text-align: center;">Performance of parallel streams</h5> 
   <p>It's really easy to make a stream parallel. But should we always do this? Not really.</p> 
   <p></p>
   <div class="alert alert-primary">
    A 
    <strong>parallel stream</strong> is not always faster than the equivalent sequential stream.
-  </div> 
+  </div>
+  <p></p> 
   <p>There are a number of factors which significantly affect the performance of a parallel stream.</p> 
   <ul> 
    <li><strong>Size of data. </strong>The bigger size of data → the greater speedup.</li> 
@@ -88,7 +92,8 @@ System.out.println(sum); // 500000500000</code></pre>
   <div class="alert alert-warning">
    When using a parallel stream, use only a neutral element (0 for summing, 1 for multiplication, and so on) as the initial value in the 
    <code class="language-java">reduce</code> method. It is better to do the same with sequential streams.
-  </div> 
+  </div>
+  <p></p> 
   <h5 id="the-foreach-method-and-the-order-of-elements" style="text-align: center;">The forEach method and the order of elements</h5> 
   <p>Given a sorted list of numbers <code class="language-java">1, 2, ..., 10</code>. We'd like to process and print each number from the list using streams.</p> 
   <p>Here is a sequential stream:</p> 
@@ -116,7 +121,8 @@ System.out.println(sum); // 500000500000</code></pre>
    When using a parallel stream, use 
    <code class="language-java">forEachOrdered</code> rather than 
    <code class="language-java">forEach</code> if the order of elements matters to you. But, at the same time, this will reduce the speedup from the parallelization.
-  </div> 
+  </div>
+  <p></p> 
   <h5 id="empty-lists-and-the-order-of-elements" style="text-align: center;">Empty lists and the order of elements</h5> 
   <p>You may have thought that there are no more problems with the order of elements. But this is not true: the order and parallelization are not friends.</p> 
   <p>Let's assume, we'd like to get the first three even numbers from a parallel stream of two concatenated streams.</p> 
@@ -141,7 +147,8 @@ List&lt;Integer&gt; emptyList = List.of();</code></pre>
   <p></p>
   <div class="alert alert-warning">
    Just a general, but an important advice: be careful with the order of elements in parallel streams. You can encounter troubles in the most unpredictable places.
-  </div> 
+  </div>
+  <p></p> 
   <h5 id="should-i-use-parallel-streams" style="text-align: center;">Should I use parallel streams?</h5> 
   <p><strong>Stream API</strong> makes it very easy to start using parallel streams. But they are not always faster than equivalent sequential streams since their performance depends on many factors including the volume of data, the hardware, and the used operations. At the same time, it is quite difficult to predict the speedup without performing measurements in the realities. In addition, there are some possible caveats when using a parallel stream especially related to the order of its elements.</p> 
   <p>Thus, you must be absolutely sure why you need parallel streams in your case. If there are enough resources or the performed operations are simple, it may be better to use sequential streams. But if you've achieved a measurable stable speedup, you can try using parallel streams.</p>

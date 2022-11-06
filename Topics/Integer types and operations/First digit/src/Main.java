@@ -4,8 +4,8 @@ class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         // put your code here
-        String number = scanner.nextLine();
-
-        System.out.println(number.charAt(0));
+        int digit = scanner.nextInt();
+        final int decimal = 10;
+        System.out.println(digit / decimal);
     }
 }

@@ -33,4 +33,14 @@ public class CarDaoImpl implements CarDao {
     public Car findById(int rentedCarId) {
         return carRepository.findById(rentedCarId);
     }
+
+    @Override
+    public List<Car> findAll() {
+        return null;
+    }
+
+    @Override
+    public void save(String name) {
+
+    }
 }

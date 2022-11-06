@@ -9,6 +9,14 @@
       <module name="Car_Sharing.Car_Sharing-task-build-test-results.main" target="11" />
       <module name="Car_Sharing.Car_Sharing-task-build-tmp.main" target="11" />
       <module name="Car_Sharing.Car_Sharing-task.main" target="11" />
+      <module name="Car_Sharing.Topics-Anonymous_classes-An_anonymous_class_with_three_methods.main" target="11" />
+      <module name="Car_Sharing.Topics-Anonymous_classes-Capture_variables.main" target="11" />
+      <module name="Car_Sharing.Topics-Anonymous_classes-Implement_Runnable.main" target="11" />
+      <module name="Car_Sharing.Topics-Anonymous_classes-Single_method.main" target="11" />
+      <module name="Car_Sharing.Topics-Anonymous_classes-String_reverser.main" target="11" />
+      <module name="Car_Sharing.Topics-Anonymous_classes-Theory.main" target="11" />
+      <module name="Car_Sharing.Topics-ArrayList-Find_the_nearest_number.main" target="11" />
+      <module name="Car_Sharing.Topics-ArrayList-Theory.main" target="11" />
       <module name="Car_Sharing.Topics-Arrays_as_parameters-Application_as_a_class.main" target="11" />
       <module name="Car_Sharing.Topics-Arrays_as_parameters-Theory.main" target="11" />
       <module name="Car_Sharing.Topics-Branching_statements-Even_or_odd.main" target="11" />
@@ -26,6 +34,10 @@
       <module name="Car_Sharing.Topics-Comparator-Theory.main" target="11" />
       <module name="Car_Sharing.Topics-Declaring_a_method-Calculating_factorials.main" target="11" />
       <module name="Car_Sharing.Topics-Declaring_a_method-Theory.main" target="11" />
+      <module name="Car_Sharing.Topics-Default_methods-Add_new_default_method.main" target="11" />
+      <module name="Car_Sharing.Topics-Default_methods-Implement_a_default_method.main" target="11" />
+      <module name="Car_Sharing.Topics-Default_methods-Resolve_a_diamond_problem.main" target="11" />
+      <module name="Car_Sharing.Topics-Default_methods-Theory.main" target="11" />
       <module name="Car_Sharing.Topics-Files-Are_siblings_.main" target="11" />
       <module name="Car_Sharing.Topics-Files-Theory.main" target="11" />
       <module name="Car_Sharing.Topics-Function_composition-Disjunct_all.main" target="11" />
@@ -38,6 +50,9 @@
       <module name="Car_Sharing.Topics-Functional_data_processing_with_streams-Theory.main" target="11" />
       <module name="Car_Sharing.Topics-Functional_decomposition-Create_a_full_name.main" target="11" />
       <module name="Car_Sharing.Topics-Functional_decomposition-Theory.main" target="11" />
+      <module name="Car_Sharing.Topics-Functional_interfaces-A_lambda_expression_with_seven_arguments.main" target="11" />
+      <module name="Car_Sharing.Topics-Functional_interfaces-Ternary_predicate.main" target="11" />
+      <module name="Car_Sharing.Topics-Functional_interfaces-Theory.main" target="11" />
       <module name="Car_Sharing.Topics-Grouping_collectors-Counting_clicks.main" target="11" />
       <module name="Car_Sharing.Topics-Grouping_collectors-Palindrome_or_not.main" target="11" />
       <module name="Car_Sharing.Topics-Grouping_collectors-The_total_sum_of_transaction_by_each_account.main" target="11" />
@@ -60,10 +75,27 @@
       <module name="Car_Sharing.Topics-Integer_types_and_operations-Tens_digit.main" target="11" />
       <module name="Car_Sharing.Topics-Integer_types_and_operations-The_sum_of_digits.main" target="11" />
       <module name="Car_Sharing.Topics-Integer_types_and_operations-Theory.main" target="11" />
+      <module name="Car_Sharing.Topics-Iterating_over_arrays-Right_Rotation.main" target="11" />
+      <module name="Car_Sharing.Topics-Iterating_over_arrays-The_index_of_the_first_max_in_an_array.main" target="11" />
+      <module name="Car_Sharing.Topics-Iterating_over_arrays-Theory.main" target="11" />
+      <module name="Car_Sharing.Topics-Lambda_expressions-Apply_function_to_all_elements.main" target="11" />
+      <module name="Car_Sharing.Topics-Lambda_expressions-Creating_a_closure.main" target="11" />
+      <module name="Car_Sharing.Topics-Lambda_expressions-Expression_closure.main" target="11" />
+      <module name="Car_Sharing.Topics-Lambda_expressions-Max_of_two_integers.main" target="11" />
+      <module name="Car_Sharing.Topics-Lambda_expressions-Next_even_number.main" target="11" />
+      <module name="Car_Sharing.Topics-Lambda_expressions-Production_of_all_numbers_in_the_range.main" target="11" />
+      <module name="Car_Sharing.Topics-Lambda_expressions-Theory.main" target="11" />
       <module name="Car_Sharing.Topics-Map_and_flatMap-Count_words_without_repetitions.main" target="11" />
       <module name="Car_Sharing.Topics-Map_and_flatMap-Maximum_of_the_absolute_values.main" target="11" />
       <module name="Car_Sharing.Topics-Map_and_flatMap-Sorting_the_absolute_values.main" target="11" />
       <module name="Car_Sharing.Topics-Map_and_flatMap-Theory.main" target="11" />
+      <module name="Car_Sharing.Topics-Method_references-Ascending_and_descending_sorting.main" target="11" />
+      <module name="Car_Sharing.Topics-Method_references-Theory.main" target="11" />
+      <module name="Car_Sharing.Topics-Optional-Check_an_Optional_value.main" target="11" />
+      <module name="Car_Sharing.Topics-Optional-Create_an_Optional_value.main" target="11" />
+      <module name="Car_Sharing.Topics-Optional-Sum_up_optional_values.main" target="11" />
+      <module name="Car_Sharing.Topics-Optional-The_address_book.main" target="11" />
+      <module name="Car_Sharing.Topics-Optional-Theory.main" target="11" />
       <module name="Car_Sharing.Topics-Parallel_streams-Fix_the_sorting_order.main" target="11" />
       <module name="Car_Sharing.Topics-Parallel_streams-Inverting_streams.main" target="11" />
       <module name="Car_Sharing.Topics-Parallel_streams-Prime_numbers.main" target="11" />
@@ -72,6 +104,10 @@
       <module name="Car_Sharing.Topics-Reduction_methods-Range_quadratic_sum.main" target="11" />
       <module name="Car_Sharing.Topics-Reduction_methods-Sum_of_divisors.main" target="11" />
       <module name="Car_Sharing.Topics-Reduction_methods-Theory.main" target="11" />
+      <module name="Car_Sharing.Topics-Standard_functional_interfaces-Accounts.main" target="11" />
+      <module name="Car_Sharing.Topics-Standard_functional_interfaces-An_infinite_numbers_supplier.main" target="11" />
+      <module name="Car_Sharing.Topics-Standard_functional_interfaces-Ternary_operator.main" target="11" />
+      <module name="Car_Sharing.Topics-Standard_functional_interfaces-Theory.main" target="11" />
       <module name="Car_Sharing.Topics-Stream_filtering-Bad_words_detecting.main" target="11" />
       <module name="Car_Sharing.Topics-Stream_filtering-Check_if_a_number_is_prime.main" target="11" />
       <module name="Car_Sharing.Topics-Stream_filtering-Numbers_filtering.main" target="11" />

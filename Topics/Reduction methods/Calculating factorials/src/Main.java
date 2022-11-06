@@ -12,7 +12,8 @@ class Main {
      */
     public static long factorial(long n) {
         // write your code here
-        return LongStream.rangeClosed(1, n).reduce(1, (result, intValue) -> result *= intValue);
+        return LongStream.rangeClosed(1, n)
+                .reduce(1, (result, intValue) -> result *= intValue);
     }
 
     // Don't change the code below
