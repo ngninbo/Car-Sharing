@@ -23,9 +23,6 @@ public class Main {
 
         map.entrySet().stream()
                 .max((el1, el2) -> el2.getValue().compareTo(el1.getValue()))
-                .ifPresent(el -> {
-                    System.out.println(el.getKey());
-                    System.out.println(el.getValue());
-                });
+                .ifPresent(el -> System.out.printf("%s\n%s", el.getKey(), el.getValue()));
     }
 }
