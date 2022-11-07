@@ -1,0 +1,27 @@
+type: code
+files:
+- name: src/Main.java
+  visible: true
+  text: |-
+    import java.util.Scanner;
+
+    enum Seasons { SPRING, SUMMER, AUTUMN, WINTER }
+
+    class Main {
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+
+            Seasons season = Seasons.valueOf(scanner.nextLine());
+
+            // write your code here
+
+            System.out.println(temperature);
+        }
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/18465#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Sun, 06 Nov 2022 15:51:33 UTC
+record: -1
