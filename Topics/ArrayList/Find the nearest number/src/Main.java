@@ -18,7 +18,7 @@ public class Main {
         if (sameNumbers.isEmpty()) {
 
             result = numbers.stream()
-                    .filter(i -> i == n - 1 || i == n + 1)
+                    .filter(i -> Math.abs(i - n) == 1)
                     .collect(Collectors.toList());
 
             if (result.isEmpty()) {
