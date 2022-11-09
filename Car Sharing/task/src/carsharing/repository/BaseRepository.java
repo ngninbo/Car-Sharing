@@ -16,7 +16,7 @@ public abstract class BaseRepository<T> {
     static {
         try {
             queryProperties = PropertiesLoader.loadProperties("query.properties");
-            Class.forName(getQueryFromKey("JDBC_DRIVER"));
+            Class.forName(fromString("JDBC_DRIVER"));
         } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
         }
@@ -30,14 +30,14 @@ public abstract class BaseRepository<T> {
         return dbUrl;
     }
 
-    public static String getQueryFromKey(String queryKey) {
-        return queryProperties.getProperty(queryKey);
+    public static String fromString(String key) {
+        return queryProperties.getProperty(key);
     }
 
     public static String getPath(String databaseFilename) {
         return String.format(
-                getQueryFromKey("FORMATTED_URL"),
-                getQueryFromKey("DB_PATH"),
+                fromString("FORMATTED_URL"),
+                fromString("DB_PATH"),
                 databaseFilename);
     }
 }

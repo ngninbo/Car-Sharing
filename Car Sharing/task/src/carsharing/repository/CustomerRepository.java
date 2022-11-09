@@ -22,7 +22,7 @@ public class CustomerRepository extends BaseRepository<Customer> {
 
             connection.setAutoCommit(true);
 
-            PreparedStatement statement = connection.prepareStatement(getQueryFromKey("INSERT_INTO_CUSTOMER_QUERY"));
+            PreparedStatement statement = connection.prepareStatement(fromString("INSERT_INTO_CUSTOMER_QUERY"));
             statement.setString(1, name);
 
             statement.executeUpdate();
@@ -42,7 +42,7 @@ public class CustomerRepository extends BaseRepository<Customer> {
         try (Connection connection = DriverManager.getConnection(getDbUrl())) {
 
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(getQueryFromKey("FIND_ALL_CUSTOMER_QUERY"));
+            ResultSet resultSet = statement.executeQuery(fromString("FIND_ALL_CUSTOMER_QUERY"));
 
             while (resultSet.next()) {
                 Customer customer = new Customer(
@@ -69,7 +69,7 @@ public class CustomerRepository extends BaseRepository<Customer> {
         try (Connection connection = DriverManager.getConnection(getDbUrl())) {
 
             connection.setAutoCommit(true);
-            PreparedStatement preparedStatement = connection.prepareStatement(getQueryFromKey("FIND_CUSTOMER_BY_ID_QUERY"));
+            PreparedStatement preparedStatement = connection.prepareStatement(fromString("FIND_CUSTOMER_BY_ID_QUERY"));
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -90,7 +90,7 @@ public class CustomerRepository extends BaseRepository<Customer> {
 
         try (Connection connection = DriverManager.getConnection(getDbUrl())) {
             connection.setAutoCommit(true);
-            PreparedStatement statement = connection.prepareStatement(getQueryFromKey("UPDATE_CUSTOMER_WHEN_RENT_CAR_RETURN_QUERY"));
+            PreparedStatement statement = connection.prepareStatement(fromString("UPDATE_CUSTOMER_WHEN_RENT_CAR_RETURN_QUERY"));
             statement.setInt(1, id);
             statement.executeUpdate();
             statement.close();
@@ -104,7 +104,7 @@ public class CustomerRepository extends BaseRepository<Customer> {
         try (Connection connection = DriverManager.getConnection(getDbUrl())) {
 
             connection.setAutoCommit(true);
-            PreparedStatement statement = connection.prepareStatement(getQueryFromKey("UPDATE_CUSTOMER_WHEN_CAR_RENT_QUERY"));
+            PreparedStatement statement = connection.prepareStatement(fromString("UPDATE_CUSTOMER_WHEN_CAR_RENT_QUERY"));
             statement.setInt(1, rentedCarId);
             statement.setInt(2, customerId);
 

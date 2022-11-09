@@ -33,3 +33,6 @@ content:
 - Comparing dates and time
 - Random
 - Multiple constructors
+- BigInteger
+- BigDecimal
+- Constructor

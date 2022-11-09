@@ -19,6 +19,18 @@
       <module name="Car_Sharing.Topics-ArrayList-Theory.main" target="11" />
       <module name="Car_Sharing.Topics-Arrays_as_parameters-Application_as_a_class.main" target="11" />
       <module name="Car_Sharing.Topics-Arrays_as_parameters-Theory.main" target="11" />
+      <module name="Car_Sharing.Topics-BigDecimal-Average.main" target="11" />
+      <module name="Car_Sharing.Topics-BigDecimal-Deposit.main" target="11" />
+      <module name="Car_Sharing.Topics-BigDecimal-Gold_mining.main" target="11" />
+      <module name="Car_Sharing.Topics-BigDecimal-Multiplication.main" target="11" />
+      <module name="Car_Sharing.Topics-BigDecimal-Round_and_power.main" target="11" />
+      <module name="Car_Sharing.Topics-BigDecimal-Rounding_with_a_given_precision.main" target="11" />
+      <module name="Car_Sharing.Topics-BigDecimal-Theory.main" target="11" />
+      <module name="Car_Sharing.Topics-BigInteger-An_expression_with_large_numbers.main" target="11" />
+      <module name="Car_Sharing.Topics-BigInteger-Comparing_numbers.main" target="11" />
+      <module name="Car_Sharing.Topics-BigInteger-Double_factorial.main" target="11" />
+      <module name="Car_Sharing.Topics-BigInteger-The_smallest_value.main" target="11" />
+      <module name="Car_Sharing.Topics-BigInteger-Theory.main" target="11" />
       <module name="Car_Sharing.Topics-Branching_statements-Even_or_odd.main" target="11" />
       <module name="Car_Sharing.Topics-Branching_statements-The_sequence.main" target="11" />
       <module name="Car_Sharing.Topics-Branching_statements-Theory.main" target="11" />
@@ -39,6 +51,8 @@
       <module name="Car_Sharing.Topics-Comparing_dates_and_time-The_intersection_of_time_ranges.main" target="11" />
       <module name="Car_Sharing.Topics-Comparing_dates_and_time-The_New_Year_is_coming__or_not_.main" target="11" />
       <module name="Car_Sharing.Topics-Comparing_dates_and_time-Theory.main" target="11" />
+      <module name="Car_Sharing.Topics-Constructor-Book.main" target="11" />
+      <module name="Car_Sharing.Topics-Constructor-Theory.main" target="11" />
       <module name="Car_Sharing.Topics-Declaring_a_method-Calculating_factorials.main" target="11" />
       <module name="Car_Sharing.Topics-Declaring_a_method-Theory.main" target="11" />
       <module name="Car_Sharing.Topics-Default_methods-Add_new_default_method.main" target="11" />

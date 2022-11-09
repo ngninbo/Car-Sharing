@@ -21,7 +21,7 @@ public class CarRepository extends BaseRepository<Car> {
         boolean querySucceed = false;
         try (Connection connection = DriverManager.getConnection(getDbUrl())) {
             connection.setAutoCommit(true);
-            PreparedStatement statement = connection.prepareStatement(getQueryFromKey("INSERT_INTO_CAR_QUERY"));
+            PreparedStatement statement = connection.prepareStatement(fromString("INSERT_INTO_CAR_QUERY"));
             statement.setString(1, name);
             statement.setInt(2, companyId);
             querySucceed = statement.executeUpdate() > 0;
@@ -40,7 +40,7 @@ public class CarRepository extends BaseRepository<Car> {
 
         try (Connection connection = DriverManager.getConnection(getDbUrl())) {
 
-            PreparedStatement statement = connection.prepareStatement(getQueryFromKey("FIND_ALL_CAR_BY_COMPANY_ID_QUERY"));
+            PreparedStatement statement = connection.prepareStatement(fromString("FIND_ALL_CAR_BY_COMPANY_ID_QUERY"));
             statement.setInt(1, companyId);
             ResultSet resultSet = statement.executeQuery();
 
@@ -64,7 +64,7 @@ public class CarRepository extends BaseRepository<Car> {
 
         try (Connection connection = DriverManager.getConnection(getDbUrl())) {
 
-            PreparedStatement statement = connection.prepareStatement(getQueryFromKey("FIND_CAR_BY_ID_QUERY"));
+            PreparedStatement statement = connection.prepareStatement(fromString("FIND_CAR_BY_ID_QUERY"));
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
 

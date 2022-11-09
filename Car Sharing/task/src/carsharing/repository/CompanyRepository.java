@@ -27,7 +27,7 @@ public class CompanyRepository extends BaseRepository<Company> {
 
             Statement statement = connection.createStatement();
 
-            ResultSet resultSet = statement.executeQuery(getQueryFromKey("FIND_ALL_COMPANIES_QUERY"));
+            ResultSet resultSet = statement.executeQuery(fromString("FIND_ALL_COMPANIES_QUERY"));
 
             while (resultSet.next()) {
                 Company company = new Company(resultSet.getInt("id"), resultSet.getString("name"));
@@ -50,7 +50,7 @@ public class CompanyRepository extends BaseRepository<Company> {
 
             connection.setAutoCommit(true);
 
-            PreparedStatement statement = connection.prepareStatement(getQueryFromKey("INSERT_INTO_COMPANY_NAME_VALUES_QUERY"));
+            PreparedStatement statement = connection.prepareStatement(fromString("INSERT_INTO_COMPANY_NAME_VALUES_QUERY"));
             statement.setString(1, name);
 
             statement.executeUpdate();
@@ -71,7 +71,7 @@ public class CompanyRepository extends BaseRepository<Company> {
 
             connection.setAutoCommit(true);
 
-            PreparedStatement statement = connection.prepareStatement(getQueryFromKey("FIND_COMPANY_BY_ID_QUERY"));
+            PreparedStatement statement = connection.prepareStatement(fromString("FIND_COMPANY_BY_ID_QUERY"));
             statement.setInt(1, id);
 
             ResultSet resultSet = statement.executeQuery();
