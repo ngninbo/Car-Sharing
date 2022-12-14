@@ -11,7 +11,6 @@ public class Main {
      * @return the sorted array of integer absolute numbers
      */
     public static int[] sortedAbsNumbers(String[] numbers) {
-        // write your code here
         return Arrays.stream(numbers)
                 .mapToInt(Integer::parseInt)
                 .map(Math::abs)

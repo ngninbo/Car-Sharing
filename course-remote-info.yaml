@@ -3,7 +3,7 @@ hyperskill_project:
   ide_files: https://stepik.org/media/attachments/lesson/440790/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: Wed, 09 Nov 2022 13:25:41 UTC
+update_date: Wed, 14 Dec 2022 05:23:12 UTC
 stages:
 - id: 758
   step: 11501
@@ -29,14 +29,14 @@ topics:
     theory_id: 9704
   - title: Computer algorithms
     theory_id: 16547
+  - title: Immutability
+    theory_id: 7929
   - title: The big O notation
     theory_id: 16699
   - title: Best, average and worst cases
     theory_id: 20084
   - title: Data structures
     theory_id: 16927
-  - title: Immutability
-    theory_id: 7929
   - title: Computer programming
     theory_id: 8739
   - title: Paradigms
@@ -163,26 +163,26 @@ topics:
     theory_id: 3492
   - title: Generics and Object
     theory_id: 3493
-  - title: What are collections
-    theory_id: 3770
-  - title: The Collections Framework overview
-    theory_id: 3624
   - title: Lambda expressions
     theory_id: 11635
-  - title: ArrayList
-    theory_id: 3567
-  - title: The List interface
-    theory_id: 3581
-  - title: The Set interface
-    theory_id: 3575
   - title: Method references
     theory_id: 3620
   - title: Functional interfaces
     theory_id: 11636
+  - title: What are collections
+    theory_id: 3770
+  - title: The Collections Framework overview
+    theory_id: 3624
+  - title: ArrayList
+    theory_id: 3567
+  - title: The List interface
+    theory_id: 3581
   - title: Standard functional interfaces
     theory_id: 3623
   - title: Optional
     theory_id: 9699
+  - title: The Set interface
+    theory_id: 3575
   - title: Comparator
     theory_id: 12966
   - title: Functional data processing with streams

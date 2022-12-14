@@ -8,8 +8,7 @@ class BadWordsDetector {
 
     private static Stream<String> createBadWordsDetectingStream(String text, 
                                                                 List<String> badWords) {
-        // write your code here
-        return Arrays.stream(text.split(" "))
+        return Arrays.stream(text.split("\\s+"))
                 .filter(badWords::contains)
                 .sorted()
                 .distinct();

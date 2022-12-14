@@ -1,15 +1,13 @@
+import java.math.BigInteger;
 import java.util.*;
 import java.util.stream.Collectors;
 
 class ProcessNumbers {
 
-    public static final int LOWER_LIMIT = 10;
-
     public static List<Integer> processNumbers(Collection<Integer> numbers) {
-        // write your code here
         return numbers.stream()
                 .sorted()
-                .dropWhile(integer -> integer < LOWER_LIMIT)
+                .dropWhile(integer -> integer < BigInteger.TEN.intValue())
                 .collect(Collectors.toList());
     }
 

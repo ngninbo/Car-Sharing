@@ -6,7 +6,6 @@ import java.util.stream.Stream;
 class GenerateCats {
 
     public static List<Cat> generateNCats(int n) {
-        // write your code here
         return Stream.generate(Cat::new)
                 .limit(n)
                 .collect(Collectors.toList());

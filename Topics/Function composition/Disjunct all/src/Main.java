@@ -11,12 +11,13 @@ class CombiningPredicates {
      */
     public static IntPredicate disjunctAll(List<IntPredicate> predicates) {
 
-        int t = 0;
-
-        AtomicBoolean isTrue = new AtomicBoolean(false);
         if (predicates.isEmpty()) {
             return n -> false;
         }
+
+        int t = 0;
+
+        AtomicBoolean isTrue = new AtomicBoolean(false);
 
         predicates.forEach(intPredicate -> {
             if (intPredicate.test(t)) {

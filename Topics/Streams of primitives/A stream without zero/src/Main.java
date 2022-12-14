@@ -5,7 +5,6 @@ import java.util.stream.LongStream;
 class StreamOfPrimitives {
 
     public static LongStream getLongStream(int n) {
-        // write your code here
         return LongStream.rangeClosed(-n, n)
                 .filter(i -> i != 0);
     }

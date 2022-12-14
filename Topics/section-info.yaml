@@ -36,3 +36,24 @@ content:
 - BigInteger
 - BigDecimal
 - Constructor
+- Generic methods
+- Standard logger
+- Retrieving Class instances
+- Inner classes
+- Anonymous classes properties
+- Unit testing with JUnit
+- Dealing with modifiers
+- Manipulating fields and methods
+- Factory method
+- Decorator
+- Observer
+- Command
+- Strategy
+- Template method
+- Detecting annotations
+- Custom annotations and types of annotations
+- Threads as objects
+- Custom threads
+- Thread management
+- Thread synchronization
+- Scanning the input

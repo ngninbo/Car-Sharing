@@ -29,9 +29,9 @@ messages.add(new Message("Hello"));
 messages.add(new Message("humans!"));
 messages.add(new Message("We"));
 messages.add(new Message("came"));
-messages.add(new Message("with"));
+messages.add(new Message("in"));
 messages.add(new Message("peace!"));</code></pre> 
-  <p style="font-variant: normal;"><span style="color: #000000;">If we try to sort the list of these <code class="language-java">Message</code> objects, we will get a compilation error, because our <code class="language-java">Message</code> class does not support any methods that allow for comparing its instances. To solve this issue, let's create a <code class="language-java">Comparator</code> that will define a sorting ordering for objects of the <code class="language-java">Message</code> class.</span></p> 
+  <p style="font-variant: normal;"><span style="color: #000000;">If we try to sort the list of these <code class="language-java">Message</code> objects, we will get a compilation error, because our <code class="language-java">Message</code> class does not support any methods that allow for comparing its instances. To solve this issue, let's create a <code class="language-java">Comparator</code> that will define a sorting order for objects of the <code class="language-java">Message</code> class.</span></p> 
   <h5 id="comparator" style="font-variant: normal;">Comparator</h5> 
   <p style="font-variant: normal;"><span style="color: #000000;"><code class="language-java">Comparator&lt;T&gt;</code> is a generic interface that has a single abstract method <code class="language-java">compare</code> and quite a few non-abstract methods that we will take a look at later. To create a <code class="language-java">Comparator</code>, we need to define a class that implements the <code class="language-java">Comparator</code> interface and overrides its single abstract method:</span></p> 
   <pre><code class="language-java">class MessageContentComparator implements Comparator&lt;Message&gt; {
@@ -49,13 +49,14 @@ messages.add(new Message("peace!"));</code></pre>
    <li style="font-variant: normal;"><span style="color: #000000;">It should return a negative number if the first argument is less than the second one.</span></li> 
   </ul> 
   <p style="font-variant: normal;"><span style="color: #000000;">This way we can even override the natural ordering for any type that implements the <code class="language-java">Comparable</code> interface.</span></p> 
-  <p style="font-variant: normal;"><span style="color: #000000;"></span></p>
+  <p style="font-variant: normal;"> </p> 
+  <p></p>
   <div class="alert alert-primary">
    In the context of Java, the natural order is the order defined by the 
    <code class="language-java">compareTo</code> method of the 
    <code class="language-java">Comparable</code> interface.
-  </div>
-  <p></p> 
+  </div> 
+  <p> </p> 
   <p style="font-variant: normal;"><span style="color: #000000;">In this example, we want to sort our messages based on the length of their content:</span></p> 
   <pre><code class="language-java">class MessageContentComparator implements Comparator&lt;Message&gt; {
 
@@ -71,8 +72,8 @@ messages.add(new Message("peace!"));</code></pre>
 messages.forEach(System.out::println);</code></pre> 
   <p style="font-variant: normal;"><span style="color: #000000;">Here is the output:</span></p> 
   <pre><code class="language-no-highlight">We
+in
 came
-with
 Hello
 peace!
 humans!</code></pre> 
@@ -159,12 +160,13 @@ messages.sort(dateComparator);</code></pre>
   <p style="font-variant: normal;"><span style="color: #000000;"><code class="language-java">reversed</code> is called on a <code class="language-java">Comparator</code> and returns a new <code class="language-java">Comparator</code> that imposes the reverse ordering of the affected <code class="language-java">Comparator</code>.</span></p> 
   <p style="font-variant: normal;"><span style="color: #000000;"><code class="language-java">Comparator.comparing</code> accepts a function that extracts a <code class="language-java">Comparable</code> sort key and returns a <code class="language-java">Comparator</code> that compares objects by that key.</span></p> 
   <p style="font-variant: normal;"><span style="color: #000000;"><code class="language-java">thenComparing</code> returns a lexicographic-order comparator with a function that extracts a <code class="language-java">Comparable</code> sort key.</span></p> 
-  <p style="font-variant: normal;"></p>
+  <p style="font-variant: normal;"> </p> 
+  <p></p>
   <div class="alert alert-warning">
    Be careful when using the 
    <code class="language-java">reversed()</code> method: it will reverse the whole chain of preceding comparators. Use parentheses to limit its scope if needed.
-  </div>
-  <p></p> 
+  </div> 
+  <p> </p> 
   <p style="font-variant: normal;"><span style="color: #000000;">Here are some examples of how we can use these methods to sort a collection according to our needs:</span></p> 
   <p style="font-variant: normal;"><span style="color: #000000;">By date, new first, using a method reference to pass the sort key extractor function:</span></p> 
   <pre><code class="language-java">messages.sort(Comparator.comparing(Message::getCreated).reversed());</code></pre> 

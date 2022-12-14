@@ -29,18 +29,19 @@ long bigNumber = 100_000_000_000L;
 long result = bigNumber + twentyTwo - one; 
 System.out.println(result); // 100000000021</code></pre> 
   <p>If a number ends with the letter <code class="language-java">L</code> or <code class="language-java">l</code>, it is considered as <code class="language-java">long</code>, otherwise, it is <code class="language-java">int</code>. We recommend that you use the uppercase letter <code class="language-java">L</code> because the lower case letter <code class="language-java">l</code> is very similar to the digit <code class="language-java">1</code>.</p> 
+  <p> </p> 
   <p></p>
   <div class="alert alert-primary">
    Use 
    <code class="language-java">long</code> numbers only if it is really necessary (when you deal with numbers larger than two billion). In other situations, prefer 
    <code class="language-java">int</code> numbers. 
-  </div>
-  <p></p> 
+  </div> 
+  <p> </p> 
   <h5 id="the-forms-of-the-assignment-operator">The forms of the assignment operator</h5> 
   <p>Suppose you want to add some value to a variable. You may write something like this:</p> 
   <pre><code class="language-java">int n = 10;
 n = n + 4; // 14</code></pre> 
-  <p>The assignment operator <code class="language-java">=</code> has several forms which combine it with an operation to avoid repeating the variable twice:</p> 
+  <p>The assignment operator <code class="language-java">=</code> has several forms which combine it with an operation to avoid repeating the variable:</p> 
   <pre><code class="language-java">int n = 10;
 n += 4; // 14</code></pre> 
   <p>As you can see, this form looks more concise. There are a few other possible forms such as <code class="language-java">*=</code>, <code class="language-java">/=</code>, <code class="language-java">%=</code>.</p> 

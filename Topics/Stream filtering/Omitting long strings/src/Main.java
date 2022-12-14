@@ -9,7 +9,6 @@ public class Main {
     public static final int MAX_CHARACTER_LENGTH = 4;
 
     private static Stream<String> omitLongStrings(List<String> strings) {
-        // write your code here
         return strings.stream().filter(s -> s.length() < MAX_CHARACTER_LENGTH);
     }
 

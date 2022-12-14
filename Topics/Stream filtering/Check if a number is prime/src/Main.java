@@ -10,7 +10,6 @@ class PrimeNumbers {
      * @return true if number is prime else false
      */
     private static boolean isPrime(long number) {
-        // write your code here
         return IntStream.iterate(2, i -> i < number, i -> i + 1)
                 .allMatch(i -> number % i != 0);
     }

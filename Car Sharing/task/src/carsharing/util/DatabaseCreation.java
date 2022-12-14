@@ -16,13 +16,13 @@ public class DatabaseCreation {
             connection.setAutoCommit(false);
 
             Statement statement = connection.createStatement();
-            statement.executeUpdate(fromString("TABLE_COMPANY_CREATION_WHEN_NOT_EXISTS_QUERY"));
+            statement.executeUpdate(fromPropertyKey("TABLE_COMPANY_CREATION_WHEN_NOT_EXISTS_QUERY"));
 
             statement = connection.createStatement();
-            statement.executeUpdate(fromString("TABLE_CAR_CREATION_WHEN_NOT_EXITS_QUERY"));
+            statement.executeUpdate(fromPropertyKey("TABLE_CAR_CREATION_WHEN_NOT_EXITS_QUERY"));
 
             statement = connection.createStatement();
-            statement.executeUpdate(fromString("TABLE_CUSTOMER_CREATION_WHEN_NOT_EXISTS_QUERY"));
+            statement.executeUpdate(fromPropertyKey("TABLE_CUSTOMER_CREATION_WHEN_NOT_EXISTS_QUERY"));
 
             statement.close();
             connection.commit();
