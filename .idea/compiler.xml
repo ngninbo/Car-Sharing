@@ -81,6 +81,8 @@
       <module name="Car_Sharing.Topics-Default_methods-Implement_a_default_method.main" target="11" />
       <module name="Car_Sharing.Topics-Default_methods-Resolve_a_diamond_problem.main" target="11" />
       <module name="Car_Sharing.Topics-Default_methods-Theory.main" target="11" />
+      <module name="Car_Sharing.Topics-Defining_classes-Representing_time_as_a_class.main" target="11" />
+      <module name="Car_Sharing.Topics-Defining_classes-Theory.main" target="11" />
       <module name="Car_Sharing.Topics-Detecting_annotations-Annotated_fields.main" target="11" />
       <module name="Car_Sharing.Topics-Detecting_annotations-Printing_out_annotations.main" target="11" />
       <module name="Car_Sharing.Topics-Detecting_annotations-Theory.main" target="11" />
@@ -101,6 +103,7 @@
       <module name="Car_Sharing.Topics-Functional_data_processing_with_streams-Finding_max_and_min_elements.main" target="11" />
       <module name="Car_Sharing.Topics-Functional_data_processing_with_streams-Print_elements_of_a_stream.main" target="11" />
       <module name="Car_Sharing.Topics-Functional_data_processing_with_streams-Theory.main" target="11" />
+      <module name="Car_Sharing.Topics-Functional_decomposition-Calculator_with_four_methods.main" target="11" />
       <module name="Car_Sharing.Topics-Functional_decomposition-Create_a_full_name.main" target="11" />
       <module name="Car_Sharing.Topics-Functional_decomposition-Theory.main" target="11" />
       <module name="Car_Sharing.Topics-Functional_interfaces-A_lambda_expression_with_seven_arguments.main" target="11" />

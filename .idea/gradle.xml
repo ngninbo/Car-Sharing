@@ -90,6 +90,8 @@
             <option value="$PROJECT_DIR$/Topics/Default methods/Implement a default method" />
             <option value="$PROJECT_DIR$/Topics/Default methods/Resolve a diamond problem" />
             <option value="$PROJECT_DIR$/Topics/Default methods/Theory" />
+            <option value="$PROJECT_DIR$/Topics/Defining classes/Representing time as a class" />
+            <option value="$PROJECT_DIR$/Topics/Defining classes/Theory" />
             <option value="$PROJECT_DIR$/Topics/Detecting annotations/Annotated fields" />
             <option value="$PROJECT_DIR$/Topics/Detecting annotations/Printing out annotations" />
             <option value="$PROJECT_DIR$/Topics/Detecting annotations/Theory" />
@@ -110,6 +112,7 @@
             <option value="$PROJECT_DIR$/Topics/Functional data processing with streams/Finding max and min elements" />
             <option value="$PROJECT_DIR$/Topics/Functional data processing with streams/Print elements of a stream" />
             <option value="$PROJECT_DIR$/Topics/Functional data processing with streams/Theory" />
+            <option value="$PROJECT_DIR$/Topics/Functional decomposition/Calculator with four methods" />
             <option value="$PROJECT_DIR$/Topics/Functional decomposition/Create a full name" />
             <option value="$PROJECT_DIR$/Topics/Functional decomposition/Theory" />
             <option value="$PROJECT_DIR$/Topics/Functional interfaces/A lambda expression with seven arguments" />

@@ -3,7 +3,6 @@ package carsharing.view;
 import carsharing.controller.CarController;
 import carsharing.controller.CompanyController;
 import carsharing.controller.CustomerController;
-import carsharing.repository.BaseRepository;
 import carsharing.repository.CarRepository;
 import carsharing.repository.CompanyRepository;
 import carsharing.repository.CustomerRepository;

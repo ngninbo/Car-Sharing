@@ -1566,6 +1566,36 @@ files:
 - name: src/carsharing/service/CarSharingDao.java
   visible: true
   learner_created: true
+- name: src/carsharing/FizzBuzz.java
+  visible: true
+  learner_created: true
+- name: src/carsharing/controller/Role.java
+  visible: true
+  learner_created: true
+- name: src/carsharing/client/Client.java
+  visible: true
+  learner_created: true
+- name: src/carsharing/client/ManagerClient.java
+  visible: true
+  learner_created: true
+- name: src/carsharing/client/CompanyManager.java
+  visible: true
+  learner_created: true
+- name: src/carsharing/client/CustomerClient.java
+  visible: true
+  learner_created: true
+- name: src/carsharing/command/CarSharingCommand.java
+  visible: true
+  learner_created: true
+- name: src/carsharing/command/CompanyManagerOption.java
+  visible: true
+  learner_created: true
+- name: src/carsharing/command/ManagerClientOption.java
+  visible: true
+  learner_created: true
+- name: src/carsharing/command/CustomerClientOption.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/11504#comment
 status: Solved
 feedback:

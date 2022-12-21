@@ -4,8 +4,8 @@
  <body>
   <p>Sometimes it is necessary to impose additional responsibilities on a separate object rather than the whole class. A library for building graphics in the user interface should be able to add a new property, say, frames or new behavior (for example, the ability to scroll to any element). Adding new responsibilities is permissible through inheritance. However, this solution is static, and therefore not flexible enough.</p> 
   <h5 id="decorator" style="text-align: center;">Decorator</h5> 
-  <p>A more flexible approach is to put the component in another object called the <strong>decorator.</strong> The Decorator is a structural pattern used to add new responsibilities to an object dynamically without extending functionality. That lets you dynamically change the behavior of an object at runtime by wrapping it in an object of a decorator class.</p> 
-  <p>Decorators are used for adding some behavior that is not part of the core functionality to all interface methods. Decorator pattern perfectly suits the following tasks:</p> 
+  <p>A more flexible approach is to put the component in another object called a <strong>decorator.</strong> The Decorator is a structural pattern used to add new responsibilities to an object dynamically without extending functionality. This pattern lets you dynamically change the behavior of an object at runtime by wrapping it in an object of a decorator class.</p> 
+  <p>Decorators are used for adding some behavior that is not part of the core functionality to all interface methods. The decorator pattern perfectly suits the following tasks:</p> 
   <ul> 
    <li>caching the work results;</li> 
    <li>measuring the execution time of methods;</li> 
@@ -15,8 +15,8 @@
   <ul> 
    <li><em>Component</em> is the interface for the objects that will get new responsibilities from the decorators;</li> 
    <li><em>Concrete Component</em> defines objects which implement the Component interface and will get new responsibilities from the concrete decorators;</li> 
-   <li><em>Decorator</em> has reference to the Component and overridden component methods;</li> 
-   <li><em>Concrete Decorator</em> extends Decorator class and adds new functions, properties or state without creating new classes;</li> 
+   <li><em>Decorator</em> has a reference to a Component and overrides component methods;</li> 
+   <li><em>Concrete Decorator</em> extends the Decorator class and adds new functions, properties or state without creating new classes;</li> 
   </ul> 
   <p style="text-align: center;"><img alt="" height="602" src="https://ucarecdn.com/8422f83b-451b-442a-8588-86ec6507b72f/" width="760"></p> 
   <p style="text-align: center;"> </p> 
@@ -66,7 +66,7 @@
         return super.makeJob() + " " + makeCodeReview();
     }
 }</code></pre> 
-  <p>The second decorator is the team leader: being also a developer, the leader additionally has to communicate with customers and send weekly reports:</p> 
+  <p>The second decorator is the team leader: the leader is a developer, but additionally has to communicate with customers and send weekly reports:</p> 
   <pre><code class="language-java">public class JavaTeamLead extends DeveloperDecorator {
 
     public JavaTeamLead(Developer developer) {

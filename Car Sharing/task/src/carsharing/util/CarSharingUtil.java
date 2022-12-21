@@ -34,12 +34,28 @@ public class CarSharingUtil {
                 });
     }
 
-    public static void printOptions(List<String> options) {
+    private static void printOptions(List<String> options) {
         IntStream.range(0, options.size())
                 .forEach(i -> System.out.printf(FORMATTED_OPTION,
                         BACK_OPTION.equals(options.get(i)) || EXIT_OPTION.equals(options.get(i)) ? 0 : i + 1,
                         options.get(i))
                 );
+    }
+
+    public static void printCustomerOptions() {
+        printOptions(CUSTOMER_OPTIONS);
+    }
+
+    public static void printManagerOptions() {
+        printOptions(MANAGER_OPTIONS);
+    }
+
+    public static void printMainOptions() {
+        printOptions(MAIN_OPTIONS);
+    }
+
+    public static void printCompanyOptions() {
+        printOptions(COMPANY_OPTIONS);
     }
 
     public static void println(String messageKey) throws IOException {
