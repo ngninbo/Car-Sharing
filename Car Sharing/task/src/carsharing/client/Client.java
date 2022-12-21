@@ -10,6 +10,7 @@ import java.io.IOException;
 public abstract class Client implements CarSharingCommand {
 
     private boolean loggedIn;
+    private boolean exit;
 
     protected CompanyController companyController;
     protected CarController carController;
@@ -27,8 +28,12 @@ public abstract class Client implements CarSharingCommand {
         this.loggedIn = loggedIn;
     }
 
-    public boolean exit() {
-        return true;
+    public void exit() {
+        this.exit = true;
+    }
+
+    public boolean isExit() {
+        return exit;
     }
 
     public void login() {

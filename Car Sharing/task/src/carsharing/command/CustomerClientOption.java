@@ -44,7 +44,7 @@ public class CustomerClientOption {
             int companyIndex = new Scanner(System.in).nextInt() - 1;
             if (companyIndex != -1) {
                 List<Car> cars = getAvailableCars(companies.get(companyIndex).getId());
-                customerController.rentCar(customerId, companies.get(companyIndex).getName(), cars);
+                rentCar(customerId, companies.get(companyIndex).getName(), cars);
             }
         }
     }
@@ -79,5 +79,31 @@ public class CustomerClientOption {
                 .stream()
                 .filter(isAvailable)
                 .collect(Collectors.toList());
+    }
+
+    public void returnRentedCar(int id) throws IOException {
+        Customer customer = this.customerController.findById(id);
+
+        if (customer.getRentedCarId() == 0) {
+            CarSharingUtil.println("CUSTOMER_CAR_NOT_RENT_INFO");
+        } else {
+            this.customerController.updateWhenReturn(customer.getId());
+            CarSharingUtil.println("CUSTOMER_RENT_CAR_RETURN_SUCCEED_MSG");
+        }
+    }
+
+    private void rentCar(int customerId, String companyName, List<Car> cars) throws IOException {
+        if (cars.isEmpty()) {
+            CarSharingUtil.printf("CAR_IN_COMPANY_NO_AVAILABLE_INFO", companyName);
+        } else {
+            CarSharingUtil.printOptions("CUSTOMER_CAR_CHOICE_COMMAND", cars);
+            System.out.printf("%s. %s%n", 0, BACK_OPTION);
+            int carIndex = new Scanner(System.in).nextInt() - 1;
+            if (carIndex != -1) {
+                this.customerController.updateWhenRent(customerId, cars.get(carIndex).getId());
+                CarSharingUtil.printf("CUSTOMER_RENT_CAR_NAME_INFO", cars.get(carIndex).getName());
+                System.out.println();
+            }
+        }
     }
 }

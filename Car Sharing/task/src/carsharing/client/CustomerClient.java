@@ -59,7 +59,7 @@ public class CustomerClient extends Client {
                                 customerClientOption.rentACar(customerId);
                                 break;
                             case 2:
-                                customerController.returnRentedCar(customerId);
+                                customerClientOption.returnRentedCar(customerId);
                                 break;
                             case 3:
                                 customerClientOption.showMyRentedCar(customerId);

@@ -17,7 +17,6 @@ public class CarSharing {
     private final CarController carController;
     private final CustomerController customerController;
     private Client client;
-    private boolean exit = false;
 
     public CarSharing(CompanyController companyController, CarController carController,
                       CustomerController customerController) {
@@ -41,11 +40,22 @@ public class CarSharing {
                     client = new CustomerClient(companyController, customerController, carController).run();
                     break;
                 case 3:
-                    customerController.createCustomer();
+                    createCustomer();
                     break;
                 case 0:
-                    exit = client.exit();
+                    client.exit();
+                    break;
+                default:
+                    // Implement me
             }
-        } while (!exit);
+        } while (!client.isExit());
+    }
+
+    private void createCustomer() throws IOException {
+        CarSharingUtil.println("CUSTOMER_NAME_INPUT_COMMAND");
+        String name = new Scanner(System.in).nextLine();
+        this.customerController.update(name);
+        CarSharingUtil.println("CUSTOMER_CREATION_SUCCEED_MSG");
+        System.out.println();
     }
 }
