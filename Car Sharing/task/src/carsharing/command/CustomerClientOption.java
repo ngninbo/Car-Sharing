@@ -4,7 +4,7 @@ import carsharing.controller.CarController;
 import carsharing.controller.CompanyController;
 import carsharing.controller.ControllerFactory;
 import carsharing.controller.CustomerController;
-import carsharing.menu.ListMenu;
+import carsharing.menu.ListView;
 import carsharing.model.Car;
 import carsharing.model.Company;
 import carsharing.model.Customer;
@@ -35,7 +35,7 @@ public class CustomerClientOption {
         } else if (customer.getRentedCarId() > 0) {
             CarSharingUtil.println("CUSTOMER_CAR_ALREADY_RENT_INFO");
         } else {
-            int companyIndex = new ListMenu<>(companies).choice("COMPANY_CHOICE_COMMAND") - 1;
+            int companyIndex = new ListView<>(companies).choice("COMPANY_CHOICE_COMMAND") - 1;
             if (companyIndex != -1) {
                 List<Car> cars = getAvailableCars(companies.get(companyIndex).getId());
                 rentCar(customerId, companies.get(companyIndex).getName(), cars);
@@ -90,7 +90,7 @@ public class CustomerClientOption {
         if (cars.isEmpty()) {
             CarSharingUtil.printf("CAR_IN_COMPANY_NO_AVAILABLE_INFO", companyName);
         } else {
-            int carIndex = new ListMenu<>(cars).choice("CUSTOMER_CAR_CHOICE_COMMAND") - 1;
+            int carIndex = new ListView<>(cars).choice("CUSTOMER_CAR_CHOICE_COMMAND") - 1;
             if (carIndex != -1) {
                 this.customerController.updateWhenRent(customerId, cars.get(carIndex).getId());
                 CarSharingUtil.printf("CUSTOMER_RENT_CAR_NAME_INFO", cars.get(carIndex).getName());

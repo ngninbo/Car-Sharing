@@ -62,7 +62,7 @@ public class CustomerMenu extends Menu {
             System.out.println();
         } else {
             while (true) {
-                this.customerIndex = new ListMenu<>(customers).choice("CUSTOMER_LIST_LABEL") - 1;
+                this.customerIndex = new ListView<>(customers).choice("CUSTOMER_LIST_LABEL") - 1;
 
                 if (customerIndex == -1) {
                     System.out.println();

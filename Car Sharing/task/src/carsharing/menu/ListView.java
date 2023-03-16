@@ -13,11 +13,11 @@ import java.util.stream.IntStream;
 
 import static carsharing.util.CarSharingUtil.FORMATTED_OPTION;
 
-public class ListMenu<T> {
+public class ListView<T> {
 
     private final List<T> items;
 
-    public ListMenu(List<T> items) {
+    public ListView(List<T> items) {
         this.items = items;
     }
 

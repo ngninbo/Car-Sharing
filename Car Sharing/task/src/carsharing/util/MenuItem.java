@@ -28,7 +28,7 @@ public enum MenuItem {
         return toList(MAIN_MENU_OPTIONS);
     }
 
-    public static List<String> customer() {
+    public static List<String> cxustomer() {
         return toList(CUSTOMER_MENU_OPTIONS);
     }
 

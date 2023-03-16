@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>carsharing.controller.CustomerController</OriginalElement>
+  <nodes>
+    <node x="648.0" y="951.0">carsharing.service.CarDaoImpl</node>
+    <node x="648.0" y="824.0">carsharing.service.CarDao</node>
+    <node x="0.0" y="1696.0">carsharing.controller.CarController</node>
+    <node x="1255.0" y="937.0">carsharing.repository.CompanyRepository</node>
+    <node x="1543.0" y="1696.0">carsharing.Main</node>
+    <node x="672.0" y="283.0">carsharing.menu.CustomerMenu</node>
+    <node x="0.0" y="1185.0">carsharing.command.CustomerClientOption</node>
+    <node x="1315.0" y="327.0">carsharing.menu.ManagerMenu</node>
+    <node x="1140.0" y="1185.0">carsharing.view.CarSharingBuilder</node>
+    <node x="628.0" y="1696.0">carsharing.util.PropertiesLoader</node>
+    <node x="583.0" y="1463.0">carsharing.model.Company</node>
+    <node x="374.0" y="675.0">carsharing.service.CarSharingDao</node>
+    <node x="0.0" y="0.0">carsharing.util.MenuItem</node>
+    <node x="929.0" y="1696.0">carsharing.view.CarSharing</node>
+    <node x="316.0" y="1696.0">carsharing.controller.CompanyController</node>
+    <node x="823.0" y="1463.0">carsharing.repository.RepositoryFactory</node>
+    <node x="1520.0" y="915.0">carsharing.repository.CustomerRepository</node>
+    <node x="72.5" y="847.5">carsharing.service.CompanyDao</node>
+    <node x="649.0" y="1185.0">carsharing.model.Customer</node>
+    <node x="859.25" y="0.0">carsharing.menu.Menu</node>
+    <node x="1242.0" y="1696.0">carsharing.util.DatabaseCreation</node>
+    <node x="354.0" y="1185.0">carsharing.util.CarSharingUtil</node>
+    <node x="0.0" y="1463.0">carsharing.util.CarSharingConstants</node>
+    <node x="322.0" y="951.0">carsharing.service.CustomerDaoImpl</node>
+    <node x="1522.0" y="1463.0">carsharing.controller.ControllerFactory</node>
+    <node x="1496.0" y="1185.0">carsharing.controller.CustomerController</node>
+    <node x="357.5" y="824.0">carsharing.service.CustomerDao</node>
+    <node x="1256.0" y="675.0">carsharing.repository.BaseRepository</node>
+    <node x="313.0" y="1463.0">carsharing.menu.ListView</node>
+    <node x="1031.0" y="293.5">carsharing.menu.CompanyMenu</node>
+    <node x="1174.0" y="1463.0">carsharing.command.ManagerClientOption</node>
+    <node x="964.0" y="926.0">carsharing.repository.CarRepository</node>
+    <node x="900.0" y="1185.0">carsharing.model.Car</node>
+    <node x="384.0" y="316.0">carsharing.menu.StartMenu</node>
+    <node x="0.0" y="973.0">carsharing.service.CompanyDaoImpl</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="carsharing.menu.ManagerMenu" target="carsharing.menu.Menu" relationship="GENERALIZATION">
+      <point x="0.0" y="-61.5" />
+      <point x="1444.5" y="258.0" />
+      <point x="1002.25" y="258.0" />
+      <point x="0.0" y="116.5" />
+    </edge>
+    <edge source="carsharing.repository.CustomerRepository" target="carsharing.repository.BaseRepository" relationship="GENERALIZATION">
+      <point x="0.0" y="-94.0" />
+      <point x="1643.5" y="890.0" />
+      <point x="1377.5" y="890.0" />
+      <point x="0.0" y="95.0" />
+    </edge>
+    <edge source="carsharing.service.CarDao" target="carsharing.service.CarSharingDao" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-38.5" />
+      <point x="783.5" y="799.0" />
+      <point x="475.0" y="799.0" />
+      <point x="0.0" y="49.5" />
+    </edge>
+    <edge source="carsharing.service.CustomerDaoImpl" target="carsharing.service.CustomerDao" relationship="REALIZATION">
+      <point x="0.0" y="-94.5" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="carsharing.service.CustomerDao" target="carsharing.service.CarSharingDao" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-38.5" />
+      <point x="0.0" y="49.5" />
+    </edge>
+    <edge source="carsharing.service.CarDaoImpl" target="carsharing.service.CarDao" relationship="REALIZATION">
+      <point x="0.0" y="-94.5" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="carsharing.service.CompanyDao" target="carsharing.service.CarSharingDao" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-15.0" />
+      <point x="151.0" y="799.0" />
+      <point x="475.0" y="799.0" />
+      <point x="0.0" y="49.5" />
+    </edge>
+    <edge source="carsharing.menu.StartMenu" target="carsharing.menu.Menu" relationship="GENERALIZATION">
+      <point x="0.0" y="-72.5" />
+      <point x="518.0" y="258.0" />
+      <point x="1002.25" y="258.0" />
+      <point x="0.0" y="116.5" />
+    </edge>
+    <edge source="carsharing.service.CompanyDaoImpl" target="carsharing.service.CompanyDao" relationship="REALIZATION">
+      <point x="0.0" y="-72.5" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="carsharing.repository.CompanyRepository" target="carsharing.repository.BaseRepository" relationship="GENERALIZATION">
+      <point x="0.0" y="-72.0" />
+      <point x="0.0" y="95.0" />
+    </edge>
+    <edge source="carsharing.repository.CarRepository" target="carsharing.repository.BaseRepository" relationship="GENERALIZATION">
+      <point x="0.0" y="-83.0" />
+      <point x="1099.5" y="890.0" />
+      <point x="1377.5" y="890.0" />
+      <point x="0.0" y="95.0" />
+    </edge>
+    <edge source="carsharing.menu.CompanyMenu" target="carsharing.menu.Menu" relationship="GENERALIZATION">
+      <point x="0.0" y="-95.0" />
+      <point x="1163.0" y="258.0" />
+      <point x="1002.25" y="258.0" />
+      <point x="0.0" y="116.5" />
+    </edge>
+    <edge source="carsharing.menu.CustomerMenu" target="carsharing.menu.Menu" relationship="GENERALIZATION">
+      <point x="0.0" y="-105.5" />
+      <point x="841.5" y="258.0" />
+      <point x="1002.25" y="258.0" />
+      <point x="0.0" y="116.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.6982811142403725" showDependencies="false" x="1136.684011770698" y="406.0215621985157" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

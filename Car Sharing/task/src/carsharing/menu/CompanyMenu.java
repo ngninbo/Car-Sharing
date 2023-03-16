@@ -39,18 +39,10 @@ public class CompanyMenu extends Menu {
                 break;
             case BACK:
                 menuItem = MenuItem.UNKNOWN;
-                System.out.println();
                 return true;
         }
 
         return false;
-    }
-
-    @Override
-    public void process() throws IOException {
-        CarSharingUtil.printf("COMPANY_NAME_LABEL", company.getName());
-
-        super.process();
     }
 
     public void setCompany(Company company) {
@@ -71,7 +63,7 @@ public class CompanyMenu extends Menu {
         if (cars.isEmpty()) {
             CarSharingUtil.println("CAR_LIST_EMPTY_INFO");
         } else {
-            new ListMenu<>(cars).display("CAR_LIST_OVERVIEW_LABEL");
+            new ListView<>(cars).display("CAR_LIST_OVERVIEW_LABEL");
         }
     }
 }
