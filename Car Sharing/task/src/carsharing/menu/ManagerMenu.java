@@ -16,12 +16,12 @@ public class ManagerMenu extends Menu {
     }
 
     @Override
-    protected int display() {
+    public int display() {
         return choice();
     }
 
     @Override
-    protected boolean process(MenuItem item) throws IOException {
+    public boolean process(MenuItem item) throws IOException {
 
         ManagerClientOption managerClientOption = new ManagerClientOption(factory);
 

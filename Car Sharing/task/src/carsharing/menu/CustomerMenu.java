@@ -24,13 +24,13 @@ public class CustomerMenu extends Menu {
     }
 
     @Override
-    protected int display() {
+    public int display() {
         System.out.println();
         return choice();
     }
 
     @Override
-    protected boolean process(MenuItem item) throws IOException {
+    public boolean process(MenuItem item) throws IOException {
         CustomerClientOption customerClientOption = new CustomerClientOption(factory);
 
         int customerId = customers.get(customerIndex).getId();
@@ -59,6 +59,7 @@ public class CustomerMenu extends Menu {
 
         if (customers.isEmpty()) {
             CarSharingUtil.println("CUSTOMER_LIST_EMPTY_INFO");
+            System.out.println();
         } else {
             while (true) {
                 this.customerIndex = new ListMenu<>(customers).choice("CUSTOMER_LIST_LABEL") - 1;

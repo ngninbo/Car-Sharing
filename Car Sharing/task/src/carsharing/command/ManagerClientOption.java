@@ -6,6 +6,7 @@ import carsharing.menu.CompanyMenu;
 import carsharing.menu.ListMenu;
 import carsharing.model.Company;
 import carsharing.util.CarSharingUtil;
+import carsharing.util.MenuItem;
 
 import java.io.IOException;
 import java.util.List;
@@ -26,6 +27,7 @@ public class ManagerClientOption {
         String name = new Scanner(System.in).nextLine();
         this.companyController.save(name);
         CarSharingUtil.println("COMPANY_CREATION_SUCCEED_MSG");
+        System.out.println();
     }
 
     public void manage() throws IOException {
@@ -36,15 +38,21 @@ public class ManagerClientOption {
         } else {
 
             CompanyMenu companyMenu = new CompanyMenu(factory);
+            MenuItem item = MenuItem.UNKNOWN;
 
-            while (true) {
+            while (!companyMenu.process(item)) {
                 int companyIndex = new ListMenu<>(companies).choice("COMPANY_CHOICE_COMMAND") - 1;
 
                 if (companyIndex == -1) {
                     System.out.println();
                     return;
                 } else {
-                    companyMenu.setCompanyIndex(companyIndex).process();
+                    Company company = companies.get(companyIndex);
+                    CarSharingUtil.printf("COMPANY_NAME_LABEL", company.getName());
+                    companyMenu.setCompany(company);
+                    while (!companyMenu.process(item)) {
+                        item = companyMenu.getMenuItemFromInput(companyMenu.display());
+                    }
                 }
             }
         }

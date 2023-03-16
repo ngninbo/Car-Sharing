@@ -17,12 +17,12 @@ public class StartMenu extends Menu {
     }
 
     @Override
-    protected int display() {
+    public int display() {
         return choice();
     }
 
     @Override
-    protected boolean process(MenuItem item) throws IOException {
+    public boolean process(MenuItem item) throws IOException {
 
         switch (item) {
             case LOG_IN_AS_A_MANAGER:
@@ -34,6 +34,7 @@ public class StartMenu extends Menu {
                 break;
             case CREATE_A_CUSTOMER:
                 createCustomer();
+                break;
             case EXIT:
                 menuItem = MenuItem.UNKNOWN;
                 return false;

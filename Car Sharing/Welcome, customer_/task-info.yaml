@@ -1569,31 +1569,13 @@ files:
 - name: src/carsharing/command/CustomerClientOption.java
   visible: true
   learner_created: true
-- name: src/carsharing/util/MenuItem.java
-  visible: true
-  learner_created: true
-- name: src/carsharing/menu/Menu.java
-  visible: true
-  learner_created: true
-- name: src/carsharing/menu/StartMenu.java
-  visible: true
-  learner_created: true
-- name: src/carsharing/menu/ManagerMenu.java
-  visible: true
-  learner_created: true
-- name: src/carsharing/menu/CustomerMenu.java
-  visible: true
-  learner_created: true
 - name: src/carsharing/controller/ControllerFactory.java
   visible: true
   learner_created: true
 - name: src/carsharing/repository/RepositoryFactory.java
   visible: true
   learner_created: true
-- name: src/carsharing/menu/CompanyMenu.java
-  visible: true
-  learner_created: true
-- name: src/carsharing/menu/ListMenu.java
+- name: src/carsharing/util/MenuItem.java
   visible: true
   learner_created: true
 - name: src/carsharing/db/carsharing.mv.db

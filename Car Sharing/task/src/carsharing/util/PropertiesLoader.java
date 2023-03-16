@@ -7,7 +7,24 @@ import java.util.Properties;
 
 public class PropertiesLoader {
 
-    public static Properties loadProperties(String resourceFileName) throws IOException {
+    private static final PropertiesLoader INSTANCE = new PropertiesLoader();
+
+    private PropertiesLoader() {
+    }
+
+    public static PropertiesLoader getInstance() {
+        return INSTANCE;
+    }
+
+    public Properties messages() throws IOException {
+        return loadProperties("messages.properties");
+    }
+
+    public Properties queries() throws IOException {
+        return loadProperties("query.properties");
+    }
+
+    protected static Properties loadProperties(String resourceFileName) throws IOException {
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
         Properties configuration = new Properties();
         InputStream inputStream = loader

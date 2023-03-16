@@ -13,53 +13,48 @@ import java.util.Scanner;
 
 public class CompanyMenu extends Menu {
 
-    private final ControllerFactory factory;
-    private CarController controller;
-
-    private int companyIndex;
+    private final CarController controller;
+    private Company company;
 
     public CompanyMenu(ControllerFactory factory) {
         super(MenuItem.COMPANY_MENU_OPTIONS);
-        this.factory = factory;
         this.controller = factory.getCarController();
     }
 
     @Override
-    protected int display() {
+    public int display() {
         System.out.println();
         return choice();
     }
 
     @Override
-    protected boolean process(MenuItem item) throws IOException {
+    public boolean process(MenuItem item) throws IOException {
 
         switch (item) {
             case CAR_LIST:
-                showCarList(companyIndex);
+                showCarList(company.getId());
                 break;
             case CREATE_A_CAR:
-                createCar(companyIndex);
+                createCar(company.getId());
                 break;
             case BACK:
                 menuItem = MenuItem.UNKNOWN;
-                return false;
+                System.out.println();
+                return true;
         }
 
-        return true;
+        return false;
     }
 
     @Override
     public void process() throws IOException {
-
-        Company company = factory.getCompanyController().findAll().get(companyIndex);
         CarSharingUtil.printf("COMPANY_NAME_LABEL", company.getName());
 
         super.process();
     }
 
-    public Menu setCompanyIndex(int companyIndex) {
-        this.companyIndex = companyIndex;
-        return this;
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
     private void createCar(int companyId) throws IOException {
@@ -68,7 +63,6 @@ public class CompanyMenu extends Menu {
         boolean saveSucceed = this.controller.save(name, companyId);
         if (saveSucceed) {
             CarSharingUtil.println("CAR_CREATION_SUCCEED_MSG");
-            System.out.println();
         }
     }
 

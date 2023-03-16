@@ -12,8 +12,8 @@ import static carsharing.util.CarSharingUtil.modulo;
 
 public abstract class Menu {
 
-    protected abstract int display();
-    protected abstract boolean process(MenuItem item) throws IOException;
+    public abstract int display();
+    public abstract boolean process(MenuItem item) throws IOException;
 
     private final List<MenuItem> menuItems;
     protected MenuItem menuItem = MenuItem.UNKNOWN;
@@ -28,12 +28,12 @@ public abstract class Menu {
         }
     }
 
-    protected MenuItem getMenuItemFromInput(int input) {
+    public MenuItem getMenuItemFromInput(int input) {
         int index = findIndex(input);
         return index < 0 ? MenuItem.UNKNOWN : menuItems.get(findIndex(input));
     }
 
-    protected int choice() {
+    public int choice() {
         menuItems.stream()
                 .map(menuItem -> String.format(FORMATTED_OPTION, modulo(menuItems.indexOf(menuItem) + 1, menuItems.size()), menuItem.getName()))
                 .forEach(System.out::print);

@@ -28,6 +28,6 @@ public class CarSharingUtil {
     }
 
     public static String getText(String key) throws IOException {
-        return PropertiesLoader.loadProperties("messages.properties").getProperty(key);
+        return PropertiesLoader.getInstance().messages().getProperty(key);
     }
 }
