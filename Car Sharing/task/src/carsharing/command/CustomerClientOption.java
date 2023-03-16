@@ -2,7 +2,9 @@ package carsharing.command;
 
 import carsharing.controller.CarController;
 import carsharing.controller.CompanyController;
+import carsharing.controller.ControllerFactory;
 import carsharing.controller.CustomerController;
+import carsharing.menu.ListMenu;
 import carsharing.model.Car;
 import carsharing.model.Company;
 import carsharing.model.Customer;
@@ -10,11 +12,8 @@ import carsharing.util.CarSharingUtil;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Scanner;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-
-import static carsharing.util.CarSharingConstants.BACK_OPTION;
 
 public class CustomerClientOption {
 
@@ -22,12 +21,10 @@ public class CustomerClientOption {
     private final CarController carController;
     private final CompanyController companyController;
 
-    public CustomerClientOption(CustomerController customerController,
-                                CarController carController,
-                                CompanyController companyController) {
-        this.customerController = customerController;
-        this.carController = carController;
-        this.companyController = companyController;
+    public CustomerClientOption(ControllerFactory factory) {
+        this.customerController = factory.getCustomerController();
+        this.carController = factory.getCarController();
+        this.companyController = factory.getCompanyController();
     }
 
     public void rentACar(int customerId) throws IOException {
@@ -38,10 +35,7 @@ public class CustomerClientOption {
         } else if (customer.getRentedCarId() > 0) {
             CarSharingUtil.println("CUSTOMER_CAR_ALREADY_RENT_INFO");
         } else {
-            CarSharingUtil.printOptions("COMPANY_CHOICE_COMMAND", companies);
-            System.out.printf("%s. %s%n", 0, BACK_OPTION);
-
-            int companyIndex = new Scanner(System.in).nextInt() - 1;
+            int companyIndex = new ListMenu<>(companies).choice("COMPANY_CHOICE_COMMAND") - 1;
             if (companyIndex != -1) {
                 List<Car> cars = getAvailableCars(companies.get(companyIndex).getId());
                 rentCar(customerId, companies.get(companyIndex).getName(), cars);
@@ -96,9 +90,7 @@ public class CustomerClientOption {
         if (cars.isEmpty()) {
             CarSharingUtil.printf("CAR_IN_COMPANY_NO_AVAILABLE_INFO", companyName);
         } else {
-            CarSharingUtil.printOptions("CUSTOMER_CAR_CHOICE_COMMAND", cars);
-            System.out.printf("%s. %s%n", 0, BACK_OPTION);
-            int carIndex = new Scanner(System.in).nextInt() - 1;
+            int carIndex = new ListMenu<>(cars).choice("CUSTOMER_CAR_CHOICE_COMMAND") - 1;
             if (carIndex != -1) {
                 this.customerController.updateWhenRent(customerId, cars.get(carIndex).getId());
                 CarSharingUtil.printf("CUSTOMER_RENT_CAR_NAME_INFO", cars.get(carIndex).getName());

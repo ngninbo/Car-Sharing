@@ -17,7 +17,7 @@
 
     int temp = nums[nums.length - 1]; // save the last element in a temporary local variable
     nums[nums.length - 1] = nums[0];  // now, the last element becomes the first
-    nums[0] = temp;                   // now, the former first element becomes the last
+    nums[0] = temp;                   // now, the first element becomes the former last
 }</code></pre> 
   <p>Calling the method from the main method:</p> 
   <pre><code class="language-java">public static void main(String[] args) {
@@ -35,13 +35,13 @@
 [5, 2, 3, 4, 1]</code></pre> 
   <p>So, in the body of the main method, an array is visible as modified.</p> 
   <h5 id="varargs" style="text-align: center;">Varargs</h5> 
-  <p>It's possible to pass an arbitrary number of the same type arguments to a method using the special syntax named <strong>varargs (variable-length arguments)</strong>. These arguments are specified by three dots after the type. In the body of the method, you can process this parameter as a regular array of the specified type.</p> 
+  <p>It's possible to pass an arbitrary number of the same type of arguments to a method using a special syntax named <strong>varargs (variable-length arguments)</strong>. These arguments are specified by three dots after the type. In the body of the method, you can process this parameter as a regular array of the specified type.</p> 
   <p>The following method takes an integer <strong>vararg </strong>parameter and outputs the number of arguments in the standard output using the<strong> length</strong> property of arrays.</p> 
   <pre><code class="language-java">public static void printNumberOfArguments(int... numbers) {
     System.out.println(numbers.length);
 }</code></pre> 
   <p>As you can see, a special syntax <code class="language-java">...</code> is used here to specify a <strong>vararg</strong> parameter.</p> 
-  <p>Now, you can invoke the method passing several integer numbers or an array of ints.</p> 
+  <p>Now, you can invoke the method by passing several integer numbers or an array of ints.</p> 
   <pre><code class="language-java">printNumberOfArguments(1);
 printNumberOfArguments(1, 2);
 printNumberOfArguments(1, 2, 3);

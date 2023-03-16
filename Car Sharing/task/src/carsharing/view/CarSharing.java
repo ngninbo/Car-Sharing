@@ -1,61 +1,19 @@
 package carsharing.view;
 
-import carsharing.client.Client;
-import carsharing.client.CustomerClient;
-import carsharing.client.ManagerClient;
-import carsharing.controller.CarController;
-import carsharing.controller.CompanyController;
-import carsharing.controller.CustomerController;
-import carsharing.util.CarSharingUtil;
+import carsharing.controller.ControllerFactory;
+import carsharing.menu.StartMenu;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 public class CarSharing {
 
-    private final CompanyController companyController;
-    private final CarController carController;
-    private final CustomerController customerController;
-    private Client client;
+    private final ControllerFactory controllerFactory;
 
-    public CarSharing(CompanyController companyController, CarController carController,
-                      CustomerController customerController) {
-        this.companyController = companyController;
-        this.carController = carController;
-        this.customerController = customerController;
+    public CarSharing(ControllerFactory factory) {
+        this.controllerFactory = factory;
     }
 
     public void start() throws IOException {
-
-        do {
-            CarSharingUtil.printMainOptions();
-            Scanner scanner = new Scanner(System.in);
-            int userInput = scanner.nextInt();
-
-            switch (userInput) {
-                case 1:
-                    client = new ManagerClient(companyController, carController).run();
-                    break;
-                case 2:
-                    client = new CustomerClient(companyController, customerController, carController).run();
-                    break;
-                case 3:
-                    createCustomer();
-                    break;
-                case 0:
-                    client.exit();
-                    break;
-                default:
-                    // Implement me
-            }
-        } while (!client.isExit());
-    }
-
-    private void createCustomer() throws IOException {
-        CarSharingUtil.println("CUSTOMER_NAME_INPUT_COMMAND");
-        String name = new Scanner(System.in).nextLine();
-        this.customerController.update(name);
-        CarSharingUtil.println("CUSTOMER_CREATION_SUCCEED_MSG");
-        System.out.println();
+        new StartMenu(controllerFactory).process();
     }
 }
