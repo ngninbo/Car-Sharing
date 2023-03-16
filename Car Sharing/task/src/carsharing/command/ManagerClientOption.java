@@ -3,7 +3,7 @@ package carsharing.command;
 import carsharing.controller.CompanyController;
 import carsharing.controller.ControllerFactory;
 import carsharing.menu.CompanyMenu;
-import carsharing.menu.ListMenu;
+import carsharing.menu.ListView;
 import carsharing.model.Company;
 import carsharing.util.CarSharingUtil;
 import carsharing.util.MenuItem;
@@ -41,7 +41,7 @@ public class ManagerClientOption {
             MenuItem item = MenuItem.UNKNOWN;
 
             while (!companyMenu.process(item)) {
-                int companyIndex = new ListMenu<>(companies).choice("COMPANY_CHOICE_COMMAND") - 1;
+                int companyIndex = new ListView<>(companies).choice("COMPANY_CHOICE_COMMAND") - 1;
 
                 if (companyIndex == -1) {
                     System.out.println();
