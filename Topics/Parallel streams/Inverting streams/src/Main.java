@@ -6,7 +6,7 @@ public class Main {
     private static List<LongStream> invertedStreams(List<LongStream> streams) {
         // write your code here
         return streams.stream()
-                .map(longStream -> longStream.isParallel() ? longStream.sequential() : longStream.parallel())
+                .map(stream -> stream.isParallel() ? stream.sequential() : stream.parallel())
                 .collect(Collectors.toList());
     }
 
@@ -19,7 +19,6 @@ public class Main {
                 .map(Boolean::parseBoolean)
                 .collect(Collectors.toList());
 
-        // :)
         List<LongStream> streams = Stream
                 .iterate(0,
                         i -> i < parallelFlags.size(),

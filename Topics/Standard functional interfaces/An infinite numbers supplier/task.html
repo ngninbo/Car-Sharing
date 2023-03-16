@@ -3,7 +3,7 @@
  <head></head>
  <body>
   <p>Create a supplier that returns integer values from 0 to infinity.</p> 
-  <p>After first <code class="language-java">get()</code> invocation a supplier must return 0. After the second one, it must return 1, the next one returns 2, 3, etc.</p> 
+  <p>At the first <code class="language-java">get()</code> invocation the supplier must return 0. After the second one, it must return 1, the next one returns 2, 3, etc.</p> 
   <p>So this code should print "0 1 2 3 4 ":</p> 
   <pre><code class="language-java">Supplier&lt;Integer&gt; sup = getInfiniteRange();
 for(int i = 0; i &lt; 5; i++) {

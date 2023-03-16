@@ -6,8 +6,7 @@ class ParallelFilteringStream {
     public static LongStream createPrimesFilteringStream(long start, long end) {
         // write your code here
         return LongStream.rangeClosed(start, end)
-                .parallel()
-                .filter(NumberUtils::isPrime);
+                .parallel().filter(NumberUtils::isPrime);
     }
 
     /* Please do not modify the code below */
@@ -21,7 +20,7 @@ class ParallelFilteringStream {
         final LongStream stream = createPrimesFilteringStream(left, right);
 
         if (!stream.isParallel()) {
-            throw new NoParallelStreamException(
+            throw new RuntimeException(
                 "You need to write a parallel stream, not sequential!");
         }
 
@@ -36,13 +35,6 @@ class ParallelFilteringStream {
             return n > 1 && LongStream
                     .rangeClosed(2, n - 1)
                     .noneMatch(divisor -> n % divisor == 0);
-        }
-    }
-
-    static class NoParallelStreamException extends RuntimeException {
-
-        public NoParallelStreamException(String text) {
-            super(text);
         }
     }
 }

@@ -2,25 +2,29 @@
 <html>
  <head></head>
  <body>
-  <p>Built-in methods are a real deal when you manage routine tasks. Still, they are not a cure-all solution since it's impossible to provide a standard method for each specific task. For example, you may need to convert dollars to euros, count your monthly spendings, or even calculate a daily portion of seeds for your parrot multiple times. That's when you create your own method to avoid repeating tons of code!</p>
+  <p>Built-in methods are a real deal when you manage routine tasks. Still, they are not a cure-all solution since it's impossible to provide a standard method for each specific task. For example, you may need to convert dollars to euros, count your monthly spending, or even calculate a daily portion of seeds for your parrot multiple times. That's when you create your own method to avoid repeating tons of code!</p>
   <p>In contrast to built-in methods, <strong>user-defined</strong> methods are created by the programmer. It is a common practice to create a customized subprogram for a specific purpose.</p>
   <p>But how to create it? Let's figure it out.</p>
-  <h5 id="the-syntax-of-the-method">The syntax of the method</h5>
+  <h5 id="the-syntax-of-a-method">The syntax of a method</h5>
   <p>Technically, a method is just a structured part of code with a few components. In Java, a method is always located inside a <strong>class</strong>. Let's take a closer look at a method that calculates a daily portion of seeds for a parrot:</p>
-  <p><img alt="" src="https://ucarecdn.com/34fd3304-e6ae-4198-b13d-3a447b836456/"></p>
+  <p><img alt="" height="453" src="https://ucarecdn.com/34fd3304-e6ae-4198-b13d-3a447b836456/" width="1103"></p>
   <p>A method contains a<strong> set of modifiers</strong>, a <strong>type of the return value</strong>, a <strong>name</strong>,<strong> </strong>a list of <strong>parameters</strong> in parentheses <code class="language-java">()</code> , and a <strong>body</strong> in curly brackets <code class="language-java">{}</code>. The combination of the name of the method and the list of its parameters is known as a method <strong>signature</strong>. In our example, the signature is <code class="language-java">countSeeds(int, int)</code>. </p>
-  <p>Some methods also have a list of exceptions — they define the method's behavior in case of a mistake in the program. If during an execution of a method, one of its exceptions is thrown, the exception is handled outside the method. For now, we'll consider simple methods without exceptions.</p>
+  <p>Some methods also have a list of exceptions — they define the method's behavior in case of a mistake in the program. If during the execution of a method, one of its exceptions is thrown, the exception is handled outside the method. For now, we'll consider simple methods without exceptions.</p>
   <p>Let's focus on the main components that we need to write simple methods from scratch. </p>
   <h5 id="modifiers">Modifiers</h5>
   <p>The first words are so-called modifiers. There are two types of modifiers in Java: <strong>access modifiers</strong> and <strong>non-access modifiers</strong>.</p>
   <p>Access modifiers define the visibility of the method. For now, we're using a <code class="language-java">public</code> access modifier, which means there are no restrictions for invoking the method even from other classes. </p>
   <p>Non-access modifiers<strong> </strong>provide information about the behavior of methods to JVM. The modifier <code class="language-java">static</code> means that the method belongs to the class and it can be accessed without creating any object. This type of method is called a <strong>static method</strong>. </p>
   <p>If the method is declared without the <code class="language-java">static</code> modifier, it means that the method can be invoked only through or with an object or instance of this class. Such methods are called <strong>instance methods</strong>. </p>
+  <p> </p>
   <p></p>
   <div class="alert alert-primary">
+   <p></p>
    <p>Remember that there is a recommended order for the modifiers that you can find in the <a href="https://rules.sonarsource.com/java/tag/convention/RSPEC-1124" rel="noopener noreferrer nofollow" target="_blank">Java Language Specification</a>. In our case, it is <code class="language-java">public static</code>.</p>
+   <p></p>
   </div>
   <p></p>
+  <p> </p>
   <h5 id="method-parameters">Method parameters</h5>
   <p>In parentheses after the method name, we define the type, number, and order of the parameters. This reflects how they will be passed to the method when it is invoked. Take a look at these signatures:</p>
   <pre><code class="language-java">convertEurosToDollars(double dlrRate, long eur);
@@ -50,11 +54,15 @@ replace(char a, char b);</code></pre>
 		return;
 	}
 }</code></pre>
+  <p> </p>
   <p></p>
   <div class="alert alert-primary">
+   <p></p>
    <p>Remember, that if you try to return a value from a method with a <strong>void</strong> return type, a compile error will be thrown.</p>
+   <p></p>
   </div>
   <p></p>
+  <p> </p>
   <h5 id="what-happens-when-we-invoke-a-method">What happens when we invoke a method</h5>
   <p>When invoking a method, we can write the returned value to some variable, print it out, or pass it on to another method. This is how it looks in a program:</p>
   <pre><code class="language-java">int myParrotWeight = 100;

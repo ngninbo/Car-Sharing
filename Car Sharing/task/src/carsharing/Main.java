@@ -10,9 +10,7 @@ public class Main {
 
         CarSharingBuilder.init(args[1])
                 .withDatabase()
-                .withCompanyController()
-                .withCarController()
-                .withCustomerController()
+                .withControllerFactory()
                 .build()
                 .start();
     }

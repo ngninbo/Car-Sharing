@@ -6,7 +6,6 @@ class TransactionExample {
      * Calculates the general sum of canceled transactions for all non empty accounts in the list
      */
     public static long calcSumOfCanceledTransOnNonEmptyAccounts(List<Account> accounts) {
-        // write your code here
         return accounts.stream()
                 .filter(account -> account.getBalance() > 0)
                 .flatMap(account -> account.getTransactions().stream())

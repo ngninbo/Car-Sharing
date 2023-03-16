@@ -7,14 +7,14 @@
   <h5 id="solving-complex-tasks">Solving complex tasks</h5> 
   <p>The very idea of decomposing<span style="color: #64b0f4;"> </span>some problems into several subproblems is quite intuitive. If you want to cook a pizza, you don't just put all the ingredients in the oven: instead, you break the process up into separate tasks – from making the dough to actual cooking. <em>Functional</em> decomposition is not about cooking pizza, but it is based on the same principle of breaking a problem into small pieces called methods.</p> 
   <p>Let's consider an example. Think of a program that simulates the Smart home app. This app is used to control home devices that can be remotely accessed: wireless speaker systems, lights, home security, door locks, and even robots. Imagine that we have a simple Smart home app that can perform three actions: turn the music on or off, switch the light on and off, and control the door lock. Let's consider these actions as parts of our computer program.</p> 
-  <p>If we decompose this task, that's how its algorithm can be described in general:</p> 
+  <p>If we decompose this task, that is how its algorithm can be described in general:</p> 
   <ol> 
    <li>Parse the input data (entered password);</li> 
    <li>Check that the password is correct;</li> 
    <li>Ask the user what they want to do;</li> 
    <li>If the action is supported, perform it.</li> 
   </ol> 
-  <p>Imagine that you wrapped this program in code, but without a single method. That's how its structure would look like:</p> 
+  <p>Imagine that you wrapped this program in code, but without a single method. That is how its structure would look like:</p> 
   <pre><code class="language-java">// ...
         int password = 76543210;
         String speakersState;
@@ -110,9 +110,9 @@ public static void chooseAction() {
             break;
     // ...
     }</code></pre> 
-  <p>As you see, we now have a real functioning program that won't fall apart if we decide to change it a bit. We can easily test separate components since they are determined in separate methods. This also makes it easier to support the program in the future. </p> 
+  <p>As you see, we now have a real functioning program that won't fall apart if we decide to change it a bit. We can easily test separate components since they are defined in separate methods. This also makes it easier to support the program in the future. </p> 
   <h5 id="conclusion">Conclusion</h5> 
-  <p>In this topic, we have learned the importance of functional decomposition. It is used to divide the program into several methods. This approach has a lot of advantages. It helps us to:</p> 
+  <p>In this topic, we have learned the importance of functional decomposition. It is used to divide a program into several methods. This approach has a lot of advantages. It helps us to:</p> 
   <ul> 
    <li>structure the code;</li> 
    <li>follow the general logic of the program;</li> 

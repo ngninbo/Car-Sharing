@@ -15,7 +15,7 @@ public abstract class BaseRepository<T> {
 
     static {
         try {
-            queryProperties = PropertiesLoader.loadProperties("query.properties");
+            queryProperties = PropertiesLoader.getInstance().queries();
             Class.forName(fromPropertyKey("JDBC_DRIVER"));
         } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
