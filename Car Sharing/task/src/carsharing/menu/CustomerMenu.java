@@ -1,6 +1,6 @@
 package carsharing.menu;
 
-import carsharing.command.CustomerClientOption;
+import carsharing.command.CustomerCommand;
 import carsharing.controller.ControllerFactory;
 import carsharing.model.Customer;
 import carsharing.util.CarSharingUtil;
@@ -31,24 +31,12 @@ public class CustomerMenu extends Menu {
 
     @Override
     public boolean process(MenuItem item) throws IOException {
-        CustomerClientOption customerClientOption = new CustomerClientOption(factory);
 
         int customerId = customers.get(customerIndex).getId();
 
-        switch (item) {
-            case RENT_A_CAR:
-                customerClientOption.rentACar(customerId);
-                break;
-            case RETURN_A_RENTED_CAR:
-                customerClientOption.returnRentedCar(customerId);
-                break;
-            case MY_RENTED_CAR:
-                customerClientOption.showMyRentedCar(customerId);
-                break;
-            case BACK:
-                menuItem = MenuItem.UNKNOWN;
-                return false;
-
+        if (!new CustomerCommand(factory, customerId).execute(item)) {
+            menuItem = MenuItem.UNKNOWN;
+            return false;
         }
 
         return true;

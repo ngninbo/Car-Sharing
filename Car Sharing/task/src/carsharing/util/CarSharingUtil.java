@@ -1,10 +1,16 @@
 package carsharing.util;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 public class CarSharingUtil {
 
     public static final String FORMATTED_OPTION = "%d. %s\n";
+
+    public static String enter(String command) throws IOException {
+        CarSharingUtil.println(command);
+        return new Scanner(System.in).nextLine();
+    }
 
     public static int modulo(int a, int b) {
         return a % b;

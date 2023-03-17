@@ -1563,12 +1563,6 @@ files:
 - name: src/carsharing/service/CarSharingDao.java
   visible: true
   learner_created: true
-- name: src/carsharing/command/ManagerClientOption.java
-  visible: true
-  learner_created: true
-- name: src/carsharing/command/CustomerClientOption.java
-  visible: true
-  learner_created: true
 - name: src/carsharing/controller/ControllerFactory.java
   visible: true
   learner_created: true
@@ -1581,10 +1575,19 @@ files:
 - name: src/carsharing/db/carsharing.mv.db
   visible: true
   learner_created: true
-- name: src/carsharing/menu/ListMenu.java
+- name: src/carsharing/menu/ListView.java
   visible: true
   learner_created: true
-- name: src/carsharing/menu/ListView.java
+- name: src/carsharing/command/Command.java
+  visible: true
+  learner_created: true
+- name: src/carsharing/command/ManagerCommand.java
+  visible: true
+  learner_created: true
+- name: src/carsharing/command/CustomerCommand.java
+  visible: true
+  learner_created: true
+- name: src/carsharing/command/StartCommand.java
   visible: true
   learner_created: true
 feedback_link: https://hyperskill.org/learn/step/11504#comment

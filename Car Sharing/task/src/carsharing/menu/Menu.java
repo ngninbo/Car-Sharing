@@ -1,5 +1,6 @@
 package carsharing.menu;
 
+import carsharing.util.CarSharingUtil;
 import carsharing.util.MenuItem;
 
 import java.io.IOException;

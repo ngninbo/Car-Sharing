@@ -1,6 +1,6 @@
 package carsharing.menu;
 
-import carsharing.command.ManagerClientOption;
+import carsharing.command.ManagerCommand;
 import carsharing.controller.ControllerFactory;
 import carsharing.util.MenuItem;
 
@@ -22,22 +22,6 @@ public class ManagerMenu extends Menu {
 
     @Override
     public boolean process(MenuItem item) throws IOException {
-
-        ManagerClientOption managerClientOption = new ManagerClientOption(factory);
-
-        switch (item) {
-            case COMPANY_LIST:
-                managerClientOption.manage();
-                break;
-            case CREATE_A_COMPANY:
-                managerClientOption.createCompany();
-                break;
-            case BACK:
-                menuItem = MenuItem.UNKNOWN;
-                System.out.println();
-                return false;
-        }
-
-        return true;
+        return new ManagerCommand(factory).execute(item);
     }
 }

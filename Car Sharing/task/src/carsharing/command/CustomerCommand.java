@@ -9,25 +9,53 @@ import carsharing.model.Car;
 import carsharing.model.Company;
 import carsharing.model.Customer;
 import carsharing.util.CarSharingUtil;
+import carsharing.util.MenuItem;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class CustomerClientOption {
+public class CustomerCommand implements Command {
 
     private final CustomerController customerController;
     private final CarController carController;
     private final CompanyController companyController;
 
-    public CustomerClientOption(ControllerFactory factory) {
+    private int customerId;
+
+    public CustomerCommand(ControllerFactory factory) {
         this.customerController = factory.getCustomerController();
         this.carController = factory.getCarController();
         this.companyController = factory.getCompanyController();
     }
 
-    public void rentACar(int customerId) throws IOException {
+    public CustomerCommand(ControllerFactory factory, int customerId) {
+        this(factory);
+        this.customerId = customerId;
+    }
+
+    @Override
+    public boolean execute(MenuItem item) throws IOException {
+        switch (item) {
+            case RENT_A_CAR:
+                rentACar(customerId);
+                break;
+            case RETURN_A_RENTED_CAR:
+                returnRentedCar(customerId);
+                break;
+            case MY_RENTED_CAR:
+                showMyRentedCar(customerId);
+                break;
+            case BACK:
+                return false;
+
+        }
+
+        return true;
+    }
+
+    protected void rentACar(int customerId) throws IOException {
         List<Company> companies = companyController.findAll();
         Customer customer = customerController.findById(customerId);
         if (companies.isEmpty()) {
@@ -38,12 +66,12 @@ public class CustomerClientOption {
             int companyIndex = new ListView<>(companies).choice("COMPANY_CHOICE_COMMAND") - 1;
             if (companyIndex != -1) {
                 List<Car> cars = getAvailableCars(companies.get(companyIndex).getId());
-                rentCar(customerId, companies.get(companyIndex).getName(), cars);
+                rentCar(customer.getId(), companies.get(companyIndex).getName(), cars);
             }
         }
     }
 
-    public void showMyRentedCar(int customerId) throws IOException {
+    protected void showMyRentedCar(int customerId) throws IOException {
         Customer customer = customerController.findById(customerId);
 
         final int rentedCarId = customer.getRentedCarId();
@@ -58,26 +86,9 @@ public class CustomerClientOption {
         }
     }
 
-    private List<Car> getAvailableCars(int companyId) {
+    protected void returnRentedCar(int id) throws IOException {
 
-        List<Customer> customers = customerController.findAll();
-
-        List<Integer> rentedCarIds = customers.stream()
-                .map(Customer::getRentedCarId)
-                .distinct()
-                .collect(Collectors.toList());
-
-        Predicate<Car> isAvailable = car -> rentedCarIds.stream().allMatch(integer -> car.getId() != integer);
-
-        return carController.findCarByCompanyId(companyId)
-                .stream()
-                .filter(isAvailable)
-                .collect(Collectors.toList());
-    }
-
-    public void returnRentedCar(int id) throws IOException {
         Customer customer = this.customerController.findById(id);
-
         if (customer.getRentedCarId() == 0) {
             CarSharingUtil.println("CUSTOMER_CAR_NOT_RENT_INFO");
         } else {
@@ -97,5 +108,22 @@ public class CustomerClientOption {
                 System.out.println();
             }
         }
+    }
+
+    private List<Car> getAvailableCars(int companyId) {
+
+        List<Customer> customers = customerController.findAll();
+
+        List<Integer> rentedCarIds = customers.stream()
+                .map(Customer::getRentedCarId)
+                .distinct()
+                .collect(Collectors.toList());
+
+        Predicate<Car> isAvailable = car -> rentedCarIds.stream().allMatch(integer -> car.getId() != integer);
+
+        return carController.findCarByCompanyId(companyId)
+                .stream()
+                .filter(isAvailable)
+                .collect(Collectors.toList());
     }
 }

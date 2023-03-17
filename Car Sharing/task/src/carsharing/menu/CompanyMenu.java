@@ -9,7 +9,8 @@ import carsharing.util.MenuItem;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Scanner;
+
+import static carsharing.util.CarSharingUtil.enter;
 
 public class CompanyMenu extends Menu {
 
@@ -50,10 +51,8 @@ public class CompanyMenu extends Menu {
     }
 
     private void createCar(int companyId) throws IOException {
-        CarSharingUtil.println("CAR_NAME_INPUT_COMMAND");
-        String name = new Scanner(System.in).nextLine();
-        boolean saveSucceed = this.controller.save(name, companyId);
-        if (saveSucceed) {
+        String name = enter("CAR_NAME_INPUT_COMMAND");
+        if (this.controller.save(name, companyId)) {
             CarSharingUtil.println("CAR_CREATION_SUCCEED_MSG");
         }
     }
