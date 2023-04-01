@@ -32,10 +32,10 @@ public class CompanyMenu extends Menu {
 
         switch (item) {
             case CAR_LIST:
-                showCarList(company.getId());
+                showCarList();
                 break;
             case CREATE_A_CAR:
-                createCar(company.getId());
+                createCar();
                 break;
             case BACK:
                 menuItem = MenuItem.UNKNOWN;
@@ -50,15 +50,15 @@ public class CompanyMenu extends Menu {
         this.company = company;
     }
 
-    private void createCar(int companyId) throws IOException {
+    private void createCar() throws IOException {
         String name = enter("CAR_NAME_INPUT_COMMAND");
-        if (this.controller.save(name, companyId)) {
+        if (this.controller.save(name, company.getId())) {
             CarSharingUtil.println("CAR_CREATION_SUCCEED_MSG");
         }
     }
 
-    private void showCarList(int companyId) throws IOException {
-        List<Car> cars = this.controller.findCarByCompanyId(companyId);
+    private void showCarList() throws IOException {
+        List<Car> cars = this.controller.findCarByCompanyId(company.getId());
         if (cars.isEmpty()) {
             CarSharingUtil.println("CAR_LIST_EMPTY_INFO");
         } else {

@@ -29,9 +29,7 @@ public class CustomerMenu extends Menu {
     @Override
     public boolean process(MenuItem item) throws IOException {
 
-        int customerId = customers.get(customerIndex).getId();
-
-        if (!new CustomerCommand(factory, customerId).execute(item)) {
+        if (!new CustomerCommand(factory, customers.get(customerIndex).getId()).execute(item)) {
             menuItem = MenuItem.UNKNOWN;
             return false;
         }
@@ -46,16 +44,20 @@ public class CustomerMenu extends Menu {
             CarSharingUtil.println("CUSTOMER_LIST_EMPTY_INFO");
             System.out.println();
         } else {
-            while (true) {
-                this.customerIndex = new ListView<>(customers).choice("CUSTOMER_LIST_LABEL") - 1;
+            chooseAndProcess();
+        }
+    }
 
-                if (customerIndex == -1) {
-                    System.out.println();
-                    return;
-                }
+    private void chooseAndProcess() throws IOException {
+        while (true) {
+            this.customerIndex = new ListView<>(customers).choice("CUSTOMER_LIST_LABEL") - 1;
 
-                super.process();
+            if (customerIndex == -1) {
+                System.out.println();
+                return;
             }
+
+            super.process();
         }
     }
 }
