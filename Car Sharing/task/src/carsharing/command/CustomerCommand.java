@@ -100,6 +100,7 @@ public class CustomerCommand implements Command {
     private void rentCar(int customerId, String companyName, List<Car> cars) throws IOException {
         if (cars.isEmpty()) {
             CarSharingUtil.printf("CAR_IN_COMPANY_NO_AVAILABLE_INFO", companyName);
+            System.out.println();
         } else {
             int carIndex = new ListView<>(cars).choice("CUSTOMER_CAR_CHOICE_COMMAND") - 1;
             if (carIndex != -1) {

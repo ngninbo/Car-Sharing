@@ -7,36 +7,17 @@ import java.util.Objects;
  * to store Customer data retrieved using CustomerDAO class
  * @author Beauclair Dongmo Ngnintedem
  */
-public class Customer {
+public class Customer extends Entity {
 
-    private int id;
-    private String name;
     private int rentedCarId;
 
     public Customer(int id, String name) {
-        this.id = id;
-        this.name = name;
+        super(id, name);
     }
 
     public Customer(int id, String name, int rentedCarId) {
         this(id, name);
         this.rentedCarId = rentedCarId;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getRentedCarId() {

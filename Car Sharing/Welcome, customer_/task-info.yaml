@@ -976,64 +976,6 @@ files:
         }
     }
   learner_created: true
-- name: src/carsharing/util/CarSharingConstants.java
-  visible: true
-  text: |
-    package carsharing.util;
-
-    import java.util.List;
-
-    public class CarSharingConstants {
-
-        // Database properties
-        public static final String DB_PATH = "./src/carsharing/db/";
-        public static final String JDBC_DRIVER = "org.h2.Driver";
-        public static final String CHOOSE_A_COMPANY = "\nChoose the company:";
-
-        public static final String BACK_TXT = "0. Back";
-        public static final String CARS_LIST_TXT = "\nCar list:";
-
-        // Menu items
-        public static List<String> mainMenuOptions = List.of("1. Log in as a manager", "0. Exit");
-        public static List<String> managerMenuOptions = List.of("\n1. Company list", "2. Create a company", BACK_TXT);
-        public static List<String> managerMenuCarsOptions = List.of("\n1. Car list", "2. Create a car", BACK_TXT);
-
-        // Outputs messages
-        public static final String EMPTY_COMPANY_LIST_TXT = "\nThe company list is empty!";
-        public static final String EMPTY_CAR_LIST_TXT = "\nThe car list is empty!";
-        public static final String COMPANY_NAME_TXT = "\n'%s' company:";
-        public static final String COMPANY_CREATION_SUCCEED_MSG = "The company was created!";
-        public static final String CAR_CREATION_SUCCEED_MSG = "The car was add!";
-        public static final String ENTER_COMPANY_NAME_TEXT = "\nEnter the company name: ";
-        public static final String ENTER_CAR_NAME_TEXT = "\nEnter the car name: ";
-
-        // SQL Statements
-        public static final String CREATE_TABLE_COMPANY_QUERY = "ALTER TABLE IF EXISTS CAR " +
-                " DROP CONSTRAINT FK_CAR;" +
-                " DROP TABLE IF EXISTS COMPANY;" +
-                " CREATE TABLE COMPANY (" +
-                "   ID INTEGER PRIMARY KEY AUTO_INCREMENT, " +
-                "   NAME VARCHAR(30) UNIQUE NOT NULL" +
-                ");";
-
-        public static final String CREATE_TABLE_CAR_QUERY = "DROP TABLE IF EXISTS CAR;" +
-                "CREATE TABLE CAR (" +
-                "   ID INTEGER PRIMARY KEY AUTO_INCREMENT, " +
-                "   NAME VARCHAR(30) UNIQUE NOT NULL," +
-                "   COMPANY_ID INTEGER NOT NULL," +
-                "   CONSTRAINT FK_CAR FOREIGN KEY (COMPANY_ID) REFERENCES COMPANY(ID) " +
-                "   ON UPDATE CASCADE " +
-                "   ON DELETE SET NULL" +
-                ");";
-
-        public static final String INSERT_INTO_COMPANY_NAME_VALUES_QUERY = "INSERT INTO COMPANY (NAME) VALUES (?);";
-        public static final String INSERT_INTO_CAR_QUERY = "INSERT INTO CAR (NAME, COMPANY_ID) VALUES (?, ?);";
-
-        public static final String SELECT_ALL_COMPANIES_QUERY = "SELECT * FROM COMPANY ORDER BY ID ASC;";
-
-        public static final String SELECT_CARDS_WHERE_COMPANY_ID_QUERY = "SELECT * FROM CAR WHERE COMPANY_ID = ? ORDER BY ID";
-    }
-  learner_created: true
 - name: src/carsharing/db/carsharing.trace.db
   visible: true
   learner_created: true
@@ -1588,6 +1530,9 @@ files:
   visible: true
   learner_created: true
 - name: src/carsharing/command/StartCommand.java
+  visible: true
+  learner_created: true
+- name: src/carsharing/model/Entity.java
   visible: true
   learner_created: true
 feedback_link: https://hyperskill.org/learn/step/11504#comment

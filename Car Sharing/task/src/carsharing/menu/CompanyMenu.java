@@ -40,6 +40,7 @@ public class CompanyMenu extends Menu {
                 break;
             case BACK:
                 menuItem = MenuItem.UNKNOWN;
+                System.out.println();
                 return true;
         }
 

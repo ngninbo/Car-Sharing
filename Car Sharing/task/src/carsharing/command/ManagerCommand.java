@@ -35,6 +35,7 @@ public class ManagerCommand implements Command {
 
         if (companies.isEmpty()) {
             CarSharingUtil.println("COMPANY_LIST_EMPTY_INFO");
+            System.out.println();
         } else {
             process(companies);
         }

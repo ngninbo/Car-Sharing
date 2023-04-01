@@ -1,8 +1,6 @@
 package carsharing.menu;
 
-import carsharing.model.Car;
-import carsharing.model.Company;
-import carsharing.model.Customer;
+import carsharing.model.Entity;
 import carsharing.util.MenuItem;
 import carsharing.util.PropertiesLoader;
 
@@ -13,7 +11,7 @@ import java.util.stream.IntStream;
 
 import static carsharing.util.CarSharingUtil.FORMATTED_OPTION;
 
-public class ListView<T> {
+public class ListView<T extends Entity> {
 
     private final List<T> items;
 
@@ -31,20 +29,9 @@ public class ListView<T> {
         System.out.println(getText(label));
         IntStream
                 .range(0, list.size())
-                .forEach(i -> {
-                    String name;
-                    if (list.get(i) instanceof Customer) {
-                        name = ((Customer) list.get(i)).getName();
-                    } else if (list.get(i) instanceof Car) {
-                        name = ((Car) list.get(i)).getName();
-                    } else if (list.get(i) instanceof Company) {
-                        name = ((Company) list.get(i)).getName();
-                    } else {
-                        name = (String) list.get(i);
-                    }
-
-                    System.out.printf(FORMATTED_OPTION, i + 1, name);
-                });
+                .forEach(i ->
+                    System.out.printf(FORMATTED_OPTION, i + 1, list.get(i).getName())
+                );
     }
 
     public void display(String label) throws IOException {

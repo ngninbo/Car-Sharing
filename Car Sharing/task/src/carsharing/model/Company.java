@@ -6,26 +6,10 @@ import java.util.Objects;
  * This class represents a simple POJO containing get/set methods to store data retrieved using DAO class
  * @author Beauclair Dongmo Ngnintedem
  */
-public class Company {
-
-    private final int id;
-    private String name;
+public class Company extends Entity {
 
     public Company(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+        super(id, name);
     }
 
     @Override

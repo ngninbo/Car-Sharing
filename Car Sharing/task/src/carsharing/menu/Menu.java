@@ -1,12 +1,10 @@
 package carsharing.menu;
 
-import carsharing.util.CarSharingUtil;
 import carsharing.util.MenuItem;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.IntStream;
 
 import static carsharing.util.CarSharingUtil.FORMATTED_OPTION;
 import static carsharing.util.CarSharingUtil.modulo;
@@ -43,9 +41,6 @@ public abstract class Menu {
 
     private int findIndex(int reminder) {
         final int size = menuItems.size();
-        return IntStream.range(0, size)
-                .filter(i -> modulo(i + 1, size) == reminder)
-                .findFirst().orElse(-1);
-
+        return reminder == 0 ? size - 1 : reminder - 1;
     }
 }
