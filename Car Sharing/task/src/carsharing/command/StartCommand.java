@@ -4,7 +4,7 @@ import carsharing.controller.ControllerFactory;
 import carsharing.menu.CustomerMenu;
 import carsharing.menu.ManagerMenu;
 import carsharing.util.CarSharingUtil;
-import carsharing.util.MenuItem;
+import carsharing.menu.MenuItem;
 
 import java.io.IOException;
 

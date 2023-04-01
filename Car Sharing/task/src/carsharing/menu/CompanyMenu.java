@@ -5,7 +5,6 @@ import carsharing.controller.ControllerFactory;
 import carsharing.model.Car;
 import carsharing.model.Company;
 import carsharing.util.CarSharingUtil;
-import carsharing.util.MenuItem;
 
 import java.io.IOException;
 import java.util.List;
@@ -18,7 +17,7 @@ public class CompanyMenu extends Menu {
     private Company company;
 
     public CompanyMenu(ControllerFactory factory) {
-        super(MenuItem.COMPANY_MENU_OPTIONS);
+        super(MenuItem.companyMenuItems());
         this.controller = factory.getCarController();
     }
 

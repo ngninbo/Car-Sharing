@@ -2,7 +2,6 @@ package carsharing.menu;
 
 import carsharing.command.ManagerCommand;
 import carsharing.controller.ControllerFactory;
-import carsharing.util.MenuItem;
 
 import java.io.IOException;
 
@@ -11,7 +10,7 @@ public class ManagerMenu extends Menu {
     private final ControllerFactory factory;
 
     public ManagerMenu(ControllerFactory factory) {
-        super(MenuItem.MANAGER_OPTIONS);
+        super(MenuItem.managerMenuItems());
         this.factory = factory;
     }
 

@@ -2,7 +2,6 @@ package carsharing.view;
 
 import carsharing.controller.ControllerFactory;
 import carsharing.repository.RepositoryFactory;
-import carsharing.util.DatabaseCreation;
 
 public class CarSharingBuilder {
 
@@ -17,13 +16,13 @@ public class CarSharingBuilder {
         return new CarSharingBuilder(databaseFilename);
     }
 
-    public CarSharingBuilder withDatabase() {
-        DatabaseCreation.createDatabaseTable(databaseFilename);
+    public CarSharingBuilder withControllerFactory() {
+        this.factory = new ControllerFactory(new RepositoryFactory(databaseFilename));
         return this;
     }
 
-    public CarSharingBuilder withControllerFactory() {
-        this.factory = new ControllerFactory(new RepositoryFactory(databaseFilename));
+    public CarSharingBuilder withDatabase() {
+        factory.createDatabaseTable();
         return this;
     }
 

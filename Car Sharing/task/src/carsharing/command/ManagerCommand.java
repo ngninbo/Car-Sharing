@@ -6,7 +6,7 @@ import carsharing.menu.CompanyMenu;
 import carsharing.menu.ListView;
 import carsharing.model.Company;
 import carsharing.util.CarSharingUtil;
-import carsharing.util.MenuItem;
+import carsharing.menu.MenuItem;
 
 import java.io.IOException;
 import java.util.List;

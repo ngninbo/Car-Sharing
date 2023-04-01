@@ -1,7 +1,6 @@
 package carsharing.menu;
 
 import carsharing.model.Entity;
-import carsharing.util.MenuItem;
 import carsharing.util.PropertiesLoader;
 
 import java.io.IOException;

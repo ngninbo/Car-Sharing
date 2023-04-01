@@ -3,12 +3,15 @@ package carsharing.repository;
 import carsharing.util.PropertiesLoader;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Properties;
 
 public abstract class BaseRepository<T> {
 
-    private final String dbUrl;
+    private static String dbUrl;
     private static Properties queryProperties;
     public abstract T findById(int id);
     public abstract List<T> findAll();
@@ -16,7 +19,7 @@ public abstract class BaseRepository<T> {
     static {
         try {
             queryProperties = PropertiesLoader.getInstance().queries();
-            Class.forName(fromPropertyKey("JDBC_DRIVER"));
+            Class.forName(getPropertyFromKey("JDBC_DRIVER"));
         } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
         }
@@ -26,18 +29,22 @@ public abstract class BaseRepository<T> {
         dbUrl = getPath(databaseFilename);
     }
 
-    public String getDbUrl() {
+    public static String getDbUrl() {
         return dbUrl;
     }
 
-    public static String fromPropertyKey(String key) {
+    protected static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(getDbUrl());
+    }
+
+    public static String getPropertyFromKey(String key) {
         return queryProperties.getProperty(key);
     }
 
     public static String getPath(String databaseFilename) {
         return String.format(
-                fromPropertyKey("FORMATTED_URL"),
-                fromPropertyKey("DB_PATH"),
+                getPropertyFromKey("FORMATTED_URL"),
+                getPropertyFromKey("DB_PATH"),
                 databaseFilename);
     }
 }

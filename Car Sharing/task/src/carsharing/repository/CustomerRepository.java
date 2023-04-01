@@ -18,11 +18,11 @@ public class CustomerRepository extends BaseRepository<Customer> {
 
     public void save(String name) {
 
-        try (Connection connection = DriverManager.getConnection(getDbUrl())) {
+        try (Connection connection = getConnection()) {
 
             connection.setAutoCommit(true);
 
-            PreparedStatement statement = connection.prepareStatement(fromPropertyKey("INSERT_INTO_CUSTOMER_QUERY"));
+            PreparedStatement statement = connection.prepareStatement(getPropertyFromKey("INSERT_INTO_CUSTOMER_QUERY"));
             statement.setString(1, name);
 
             statement.executeUpdate();
@@ -39,10 +39,10 @@ public class CustomerRepository extends BaseRepository<Customer> {
 
         List<Customer> customers = new ArrayList<>();
 
-        try (Connection connection = DriverManager.getConnection(getDbUrl())) {
+        try (Connection connection = getConnection()) {
 
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(fromPropertyKey("FIND_ALL_CUSTOMER_QUERY"));
+            ResultSet resultSet = statement.executeQuery(getPropertyFromKey("FIND_ALL_CUSTOMER_QUERY"));
 
             while (resultSet.next()) {
                 Customer customer = new Customer(
@@ -66,10 +66,10 @@ public class CustomerRepository extends BaseRepository<Customer> {
 
         Customer customer = null;
 
-        try (Connection connection = DriverManager.getConnection(getDbUrl())) {
+        try (Connection connection = getConnection()) {
 
             connection.setAutoCommit(true);
-            PreparedStatement preparedStatement = connection.prepareStatement(fromPropertyKey("FIND_CUSTOMER_BY_ID_QUERY"));
+            PreparedStatement preparedStatement = connection.prepareStatement(getPropertyFromKey("FIND_CUSTOMER_BY_ID_QUERY"));
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -88,9 +88,9 @@ public class CustomerRepository extends BaseRepository<Customer> {
 
     public void updateWhenReturn(int id) {
 
-        try (Connection connection = DriverManager.getConnection(getDbUrl())) {
+        try (Connection connection = getConnection()) {
             connection.setAutoCommit(true);
-            PreparedStatement statement = connection.prepareStatement(fromPropertyKey("UPDATE_CUSTOMER_WHEN_RENT_CAR_RETURN_QUERY"));
+            PreparedStatement statement = connection.prepareStatement(getPropertyFromKey("UPDATE_CUSTOMER_WHEN_RENT_CAR_RETURN_QUERY"));
             statement.setInt(1, id);
             statement.executeUpdate();
             statement.close();
@@ -101,10 +101,10 @@ public class CustomerRepository extends BaseRepository<Customer> {
 
     public void updateWhenRent(int customerId, int rentedCarId) {
 
-        try (Connection connection = DriverManager.getConnection(getDbUrl())) {
+        try (Connection connection = getConnection()) {
 
             connection.setAutoCommit(true);
-            PreparedStatement statement = connection.prepareStatement(fromPropertyKey("UPDATE_CUSTOMER_WHEN_CAR_RENT_QUERY"));
+            PreparedStatement statement = connection.prepareStatement(getPropertyFromKey("UPDATE_CUSTOMER_WHEN_CAR_RENT_QUERY"));
             statement.setInt(1, rentedCarId);
             statement.setInt(2, customerId);
 

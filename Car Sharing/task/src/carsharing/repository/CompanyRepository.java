@@ -21,13 +21,13 @@ public class CompanyRepository extends BaseRepository<Company> {
 
         List<Company> companies = new ArrayList<>();
 
-        try (Connection connection = DriverManager.getConnection(getDbUrl())) {
+        try (Connection connection = getConnection()) {
 
             connection.setAutoCommit(true);
 
             Statement statement = connection.createStatement();
 
-            ResultSet resultSet = statement.executeQuery(fromPropertyKey("FIND_ALL_COMPANIES_QUERY"));
+            ResultSet resultSet = statement.executeQuery(getPropertyFromKey("FIND_ALL_COMPANIES_QUERY"));
 
             while (resultSet.next()) {
                 Company company = new Company(resultSet.getInt("id"), resultSet.getString("name"));
@@ -46,11 +46,11 @@ public class CompanyRepository extends BaseRepository<Company> {
 
     public void save(String name) {
 
-        try (Connection connection = DriverManager.getConnection(getDbUrl())) {
+        try (Connection connection = getConnection()) {
 
             connection.setAutoCommit(true);
 
-            PreparedStatement statement = connection.prepareStatement(fromPropertyKey("INSERT_INTO_COMPANY_NAME_VALUES_QUERY"));
+            PreparedStatement statement = connection.prepareStatement(getPropertyFromKey("INSERT_INTO_COMPANY_NAME_VALUES_QUERY"));
             statement.setString(1, name);
 
             statement.executeUpdate();
@@ -67,11 +67,11 @@ public class CompanyRepository extends BaseRepository<Company> {
 
         Company company = null;
 
-        try (Connection connection = DriverManager.getConnection(getDbUrl())) {
+        try (Connection connection = getConnection()) {
 
             connection.setAutoCommit(true);
 
-            PreparedStatement statement = connection.prepareStatement(fromPropertyKey("FIND_COMPANY_BY_ID_QUERY"));
+            PreparedStatement statement = connection.prepareStatement(getPropertyFromKey("FIND_COMPANY_BY_ID_QUERY"));
             statement.setInt(1, id);
 
             ResultSet resultSet = statement.executeQuery();

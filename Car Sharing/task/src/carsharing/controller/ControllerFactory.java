@@ -24,4 +24,8 @@ public class ControllerFactory {
     public CustomerController getCustomerController() {
         return new CustomerController(new CustomerDaoImpl(repositoryFactory.getCustomerRepository()));
     }
+
+    public void createDatabaseTable() {
+        repositoryFactory.initDataBaseTable();
+    }
 }

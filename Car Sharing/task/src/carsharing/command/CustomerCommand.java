@@ -9,7 +9,7 @@ import carsharing.model.Car;
 import carsharing.model.Company;
 import carsharing.model.Customer;
 import carsharing.util.CarSharingUtil;
-import carsharing.util.MenuItem;
+import carsharing.menu.MenuItem;
 
 import java.io.IOException;
 import java.util.List;
