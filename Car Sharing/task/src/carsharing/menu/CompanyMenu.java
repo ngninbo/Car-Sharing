@@ -6,7 +6,6 @@ import carsharing.model.Car;
 import carsharing.model.Company;
 import carsharing.util.CarSharingUtil;
 
-import java.io.IOException;
 import java.util.List;
 
 import static carsharing.util.CarSharingUtil.enter;
@@ -28,7 +27,7 @@ public class CompanyMenu extends Menu {
     }
 
     @Override
-    public boolean process(MenuItem item) throws IOException {
+    public boolean process(MenuItem item) {
 
         switch (item) {
             case CAR_LIST:
@@ -50,14 +49,14 @@ public class CompanyMenu extends Menu {
         this.company = company;
     }
 
-    private void createCar() throws IOException {
+    private void createCar() {
         String name = enter("CAR_NAME_INPUT_COMMAND");
         if (this.controller.save(name, company.getId())) {
             CarSharingUtil.println("CAR_CREATION_SUCCEED_MSG");
         }
     }
 
-    private void showCarList() throws IOException {
+    private void showCarList() {
         List<Car> cars = this.controller.findCarByCompanyId(company.getId());
         if (cars.isEmpty()) {
             CarSharingUtil.println("CAR_LIST_EMPTY_INFO");

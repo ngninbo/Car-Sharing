@@ -3,7 +3,6 @@ package carsharing.menu;
 import carsharing.model.Entity;
 import carsharing.util.PropertiesLoader;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.IntStream;
@@ -18,13 +17,13 @@ public class ListView<T extends Entity> {
         this.items = items;
     }
 
-    public int choice(String label) throws IOException {
+    public int choice(String label) {
         display(label, items);
         System.out.printf(FORMATTED_OPTION, 0, MenuItem.BACK.capitalize());
-        return new Scanner(System.in).nextInt();
+        return new Scanner(System.in).nextInt() - 1;
     }
 
-    public void display(String label, List<T> list) throws IOException {
+    public void display(String label, List<T> list) {
         System.out.println(getText(label));
         IntStream
                 .range(0, list.size())
@@ -33,11 +32,11 @@ public class ListView<T extends Entity> {
                 );
     }
 
-    public void display(String label) throws IOException {
+    public void display(String label) {
         display(label, items);
     }
 
-    public String getText(String key) throws IOException {
+    public String getText(String key) {
         return PropertiesLoader.getInstance().messages().getProperty(key);
     }
 }

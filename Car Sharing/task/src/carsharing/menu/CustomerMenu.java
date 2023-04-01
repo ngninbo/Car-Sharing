@@ -5,7 +5,6 @@ import carsharing.controller.ControllerFactory;
 import carsharing.model.Customer;
 import carsharing.util.CarSharingUtil;
 
-import java.io.IOException;
 import java.util.List;
 
 public class CustomerMenu extends Menu {
@@ -27,7 +26,7 @@ public class CustomerMenu extends Menu {
     }
 
     @Override
-    public boolean process(MenuItem item) throws IOException {
+    public boolean process(MenuItem item) {
 
         if (!new CustomerCommand(factory, customers.get(customerIndex).getId()).execute(item)) {
             menuItem = MenuItem.UNKNOWN;
@@ -38,7 +37,7 @@ public class CustomerMenu extends Menu {
     }
 
     @Override
-    public void process() throws IOException {
+    public void process() {
 
         if (customers.isEmpty()) {
             CarSharingUtil.println("CUSTOMER_LIST_EMPTY_INFO");
@@ -48,9 +47,9 @@ public class CustomerMenu extends Menu {
         }
     }
 
-    private void chooseAndProcess() throws IOException {
+    private void chooseAndProcess() {
         while (true) {
-            this.customerIndex = new ListView<>(customers).choice("CUSTOMER_LIST_LABEL") - 1;
+            this.customerIndex = new ListView<>(customers).choice("CUSTOMER_LIST_LABEL");
 
             if (customerIndex == -1) {
                 System.out.println();

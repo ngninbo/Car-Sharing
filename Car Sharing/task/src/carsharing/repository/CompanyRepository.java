@@ -5,6 +5,7 @@ import carsharing.model.Company;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class CompanyRepository extends BaseRepository<Company> {
 
@@ -34,8 +35,6 @@ public class CompanyRepository extends BaseRepository<Company> {
                 companies.add(company);
             }
 
-            statement.close();
-
         } catch (SQLException sqlEx) {
             sqlEx.printStackTrace();
         }
@@ -63,9 +62,7 @@ public class CompanyRepository extends BaseRepository<Company> {
     }
 
     @Override
-    public Company findById(int id) {
-
-        Company company = null;
+    public Optional<Company> findById(int id) {
 
         try (Connection connection = getConnection()) {
 
@@ -76,8 +73,9 @@ public class CompanyRepository extends BaseRepository<Company> {
 
             ResultSet resultSet = statement.executeQuery();
 
-            while (resultSet.next()) {
-                company = new Company(resultSet.getInt("id"), resultSet.getString("name"));
+            if (resultSet.first()) {
+                Company company = new Company(resultSet.getInt("id"), resultSet.getString("name"));
+                return Optional.of(company);
             }
 
             statement.close();
@@ -86,6 +84,6 @@ public class CompanyRepository extends BaseRepository<Company> {
             sqlEx.printStackTrace();
         }
 
-        return company;
+        return Optional.empty();
     }
 }

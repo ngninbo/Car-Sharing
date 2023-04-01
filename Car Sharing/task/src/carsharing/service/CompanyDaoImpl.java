@@ -4,6 +4,7 @@ import carsharing.model.Company;
 import carsharing.repository.CompanyRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Data Access Object concrete class.
@@ -25,7 +26,7 @@ public class CompanyDaoImpl implements CompanyDao {
     }
 
     @Override
-    public Company findById(int companyId) {
+    public Optional<Company> findById(int companyId) {
         return companyRepository.findById(companyId);
     }
 

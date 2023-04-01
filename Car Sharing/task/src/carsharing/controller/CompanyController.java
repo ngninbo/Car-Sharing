@@ -4,6 +4,7 @@ import carsharing.model.Company;
 import carsharing.service.CompanyDao;
 
 import java.util.List;
+import java.util.Optional;
 
 public class CompanyController {
 
@@ -21,7 +22,7 @@ public class CompanyController {
         companyDao.save(name);
     }
 
-    public Company findCompanyById(int companyId) {
+    public Optional<Company> findCompanyById(int companyId) {
         return companyDao.findById(companyId);
     }
 }

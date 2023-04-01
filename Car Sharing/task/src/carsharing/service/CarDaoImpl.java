@@ -4,6 +4,7 @@ import carsharing.model.Car;
 import carsharing.repository.CarRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Data Access Object concrete class.
@@ -30,13 +31,13 @@ public class CarDaoImpl implements CarDao {
     }
 
     @Override
-    public Car findById(int rentedCarId) {
+    public Optional<Car> findById(int rentedCarId) {
         return carRepository.findById(rentedCarId);
     }
 
     @Override
     public List<Car> findAll() {
-        return null;
+        return carRepository.findAll();
     }
 
     @Override

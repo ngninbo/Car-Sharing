@@ -10,7 +10,7 @@ import static carsharing.util.CarSharingUtil.modulo;
 public abstract class Menu {
 
     public abstract int display();
-    public abstract boolean process(MenuItem item) throws IOException;
+    public abstract boolean process(MenuItem item);
 
     private final List<MenuItem> menuItems;
     protected MenuItem menuItem = MenuItem.UNKNOWN;
@@ -19,7 +19,7 @@ public abstract class Menu {
         this.menuItems = menuItems;
     }
 
-    public void process() throws IOException {
+    public void process() {
         while (process(menuItem)) {
             menuItem = getMenuItemFromInput(display());
         }

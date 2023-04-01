@@ -8,7 +8,6 @@ import carsharing.model.Company;
 import carsharing.util.CarSharingUtil;
 import carsharing.menu.MenuItem;
 
-import java.io.IOException;
 import java.util.List;
 
 import static carsharing.util.CarSharingUtil.enter;
@@ -23,14 +22,14 @@ public class ManagerCommand implements Command {
         this.companyController = factory.getCompanyController();
     }
 
-    protected void createCompany() throws IOException {
+    protected void createCompany() {
         String name = enter("COMPANY_NAME_INPUT_COMMAND");
         this.companyController.save(name);
         CarSharingUtil.println("COMPANY_CREATION_SUCCEED_MSG");
         System.out.println();
     }
 
-    protected void showCompanyList() throws IOException {
+    protected void showCompanyList() {
         List<Company> companies = this.companyController.findAll();
 
         if (companies.isEmpty()) {
@@ -41,12 +40,12 @@ public class ManagerCommand implements Command {
         }
     }
 
-    private void process(List<Company> companies) throws IOException {
+    private void process(List<Company> companies) {
         CompanyMenu companyMenu = new CompanyMenu(factory);
         MenuItem item = MenuItem.UNKNOWN;
 
         while (!companyMenu.process(item)) {
-            int companyIndex = new ListView<>(companies).choice("COMPANY_CHOICE_COMMAND") - 1;
+            int companyIndex = new ListView<>(companies).choice("COMPANY_CHOICE_COMMAND");
 
             if (companyIndex == -1) {
                 System.out.println();
@@ -63,7 +62,7 @@ public class ManagerCommand implements Command {
     }
 
     @Override
-    public boolean execute(MenuItem item) throws IOException {
+    public boolean execute(MenuItem item) {
         switch (item) {
             case COMPANY_LIST:
                 showCompanyList();

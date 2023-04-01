@@ -5,6 +5,7 @@ import carsharing.model.Customer;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class CustomerRepository extends BaseRepository<Customer> {
 
@@ -62,9 +63,7 @@ public class CustomerRepository extends BaseRepository<Customer> {
     }
 
     @Override
-    public Customer findById(int id) {
-
-        Customer customer = null;
+    public Optional<Customer> findById(int id) {
 
         try (Connection connection = getConnection()) {
 
@@ -73,17 +72,17 @@ public class CustomerRepository extends BaseRepository<Customer> {
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            while (resultSet.next()) {
-                customer = new Customer(resultSet.getInt("id"),
+            if (resultSet.first()) {
+                Customer customer = new Customer(resultSet.getInt("id"),
                         resultSet.getString("name"), resultSet.getInt("rented_car_id"));
-
+                return Optional.of(customer);
             }
             preparedStatement.close();
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         }
 
-        return customer;
+        return Optional.empty();
     }
 
     public void updateWhenReturn(int id) {

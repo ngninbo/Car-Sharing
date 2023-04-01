@@ -2,27 +2,33 @@ package carsharing.repository;
 
 import carsharing.util.PropertiesLoader;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 import java.util.Properties;
 
 public abstract class BaseRepository<T> {
 
     private static String dbUrl;
     private static Properties queryProperties;
-    public abstract T findById(int id);
-    public abstract List<T> findAll();
 
     static {
         try {
             queryProperties = PropertiesLoader.getInstance().queries();
             Class.forName(getPropertyFromKey("JDBC_DRIVER"));
-        } catch (ClassNotFoundException | IOException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    public List<T> findAll() {
+        return null;
+    }
+
+    protected Optional<T> findById(int id) {
+        return Optional.empty();
     }
 
     public BaseRepository(String databaseFilename) {

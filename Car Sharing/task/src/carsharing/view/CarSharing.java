@@ -3,8 +3,6 @@ package carsharing.view;
 import carsharing.controller.ControllerFactory;
 import carsharing.menu.StartMenu;
 
-import java.io.IOException;
-
 public class CarSharing {
 
     private final ControllerFactory controllerFactory;
@@ -13,7 +11,7 @@ public class CarSharing {
         this.controllerFactory = factory;
     }
 
-    public void start() throws IOException {
+    public void start() {
         new StartMenu(controllerFactory).process();
     }
 }

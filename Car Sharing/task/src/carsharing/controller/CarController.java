@@ -3,6 +3,7 @@ package carsharing.controller;
 import carsharing.model.Car;
 import carsharing.service.CarDao;
 import java.util.List;
+import java.util.Optional;
 
 public class CarController {
 
@@ -20,7 +21,7 @@ public class CarController {
         return carDao.findCarByCompanyId(companyId);
     }
 
-    public Car findById(int rentedCarId) {
+    public Optional<Car> findById(int rentedCarId) {
         return carDao.findById(rentedCarId);
     }
 

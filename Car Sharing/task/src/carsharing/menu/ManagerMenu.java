@@ -3,8 +3,6 @@ package carsharing.menu;
 import carsharing.command.ManagerCommand;
 import carsharing.controller.ControllerFactory;
 
-import java.io.IOException;
-
 public class ManagerMenu extends Menu {
 
     private final ControllerFactory factory;
@@ -20,7 +18,7 @@ public class ManagerMenu extends Menu {
     }
 
     @Override
-    public boolean process(MenuItem item) throws IOException {
+    public boolean process(MenuItem item) {
         return new ManagerCommand(factory).execute(item);
     }
 }

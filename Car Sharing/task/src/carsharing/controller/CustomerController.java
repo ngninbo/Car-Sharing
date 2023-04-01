@@ -3,6 +3,7 @@ package carsharing.controller;
 import carsharing.model.Customer;
 import carsharing.service.CustomerDao;
 import java.util.List;
+import java.util.Optional;
 
 public class CustomerController {
 
@@ -20,7 +21,7 @@ public class CustomerController {
         customerDao.save(name);
     }
 
-    public Customer findById(int id) {
+    public Optional<Customer> findById(int id) {
         return customerDao.findById(id);
     }
 

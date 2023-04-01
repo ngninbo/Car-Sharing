@@ -4,6 +4,7 @@ import carsharing.model.Customer;
 import carsharing.repository.CustomerRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Data Access Object concrete class.
@@ -30,7 +31,7 @@ public class CustomerDaoImpl implements CustomerDao {
     }
 
     @Override
-    public Customer findById(int id) {
+    public Optional<Customer> findById(int id) {
         return customerRepository.findById(id);
     }
 

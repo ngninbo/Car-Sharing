@@ -11,9 +11,7 @@ import carsharing.model.Customer;
 import carsharing.util.CarSharingUtil;
 import carsharing.menu.MenuItem;
 
-import java.io.IOException;
 import java.util.List;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class CustomerCommand implements Command {
@@ -22,7 +20,7 @@ public class CustomerCommand implements Command {
     private final CarController carController;
     private final CompanyController companyController;
 
-    private int customerId;
+    private Customer customer;
 
     public CustomerCommand(ControllerFactory factory) {
         this.customerController = factory.getCustomerController();
@@ -32,63 +30,59 @@ public class CustomerCommand implements Command {
 
     public CustomerCommand(ControllerFactory factory, int customerId) {
         this(factory);
-        this.customerId = customerId;
+        this.customer = customerController.findById(customerId).orElseThrow();
     }
 
     @Override
-    public boolean execute(MenuItem item) throws IOException {
+    public boolean execute(MenuItem item) {
         switch (item) {
             case RENT_A_CAR:
-                rentACar(customerId);
+                rentACar();
                 break;
             case RETURN_A_RENTED_CAR:
-                returnRentedCar(customerId);
+                returnRentedCar();
                 break;
             case MY_RENTED_CAR:
-                showMyRentedCar(customerId);
+                showMyRentedCar();
                 break;
             case BACK:
                 return false;
-
         }
 
         return true;
     }
 
-    protected void rentACar(int customerId) throws IOException {
+    protected void rentACar() {
         List<Company> companies = companyController.findAll();
-        Customer customer = customerController.findById(customerId);
         if (companies.isEmpty()) {
             CarSharingUtil.println("COMPANY_LIST_EMPTY_INFO");
         } else if (customer.getRentedCarId() > 0) {
             CarSharingUtil.println("CUSTOMER_CAR_ALREADY_RENT_INFO");
         } else {
-            int companyIndex = new ListView<>(companies).choice("COMPANY_CHOICE_COMMAND") - 1;
+            int companyIndex = new ListView<>(companies).choice("COMPANY_CHOICE_COMMAND");
             if (companyIndex != -1) {
-                List<Car> cars = getAvailableCars(companies.get(companyIndex).getId());
-                rentCar(customer.getId(), companies.get(companyIndex).getName(), cars);
+                rentCar(customer.getId(), companies.get(companyIndex).getName(), getAvailableCars(companies.get(companyIndex).getId()));
             }
         }
     }
 
-    protected void showMyRentedCar(int customerId) throws IOException {
-        Customer customer = customerController.findById(customerId);
+    protected void showMyRentedCar() {
 
         final int rentedCarId = customer.getRentedCarId();
 
         if (rentedCarId == 0) {
             CarSharingUtil.println("CUSTOMER_CAR_NOT_RENT_INFO");
         } else {
-            Car car = carController.findById(rentedCarId);
-            String companyName = companyController.findCompanyById(car.getCompanyId()).getName();
-            CarSharingUtil.printf("CUSTOMER_RENTED_CAR_INFO", car.getName(), companyName);
-            System.out.println();
+            carController.findById(rentedCarId).ifPresent(car -> {
+                String companyName = companyController.findCompanyById(car.getCompanyId()).orElseThrow().getName();
+                CarSharingUtil.printf("CUSTOMER_RENTED_CAR_INFO", car.getName(), companyName);
+                System.out.println();
+            });
         }
     }
 
-    protected void returnRentedCar(int id) throws IOException {
+    protected void returnRentedCar() {
 
-        Customer customer = this.customerController.findById(id);
         if (customer.getRentedCarId() == 0) {
             CarSharingUtil.println("CUSTOMER_CAR_NOT_RENT_INFO");
         } else {
@@ -97,12 +91,12 @@ public class CustomerCommand implements Command {
         }
     }
 
-    private void rentCar(int customerId, String companyName, List<Car> cars) throws IOException {
+    private void rentCar(int customerId, String companyName, List<Car> cars) {
         if (cars.isEmpty()) {
             CarSharingUtil.printf("CAR_IN_COMPANY_NO_AVAILABLE_INFO", companyName);
             System.out.println();
         } else {
-            int carIndex = new ListView<>(cars).choice("CUSTOMER_CAR_CHOICE_COMMAND") - 1;
+            int carIndex = new ListView<>(cars).choice("CUSTOMER_CAR_CHOICE_COMMAND");
             if (carIndex != -1) {
                 this.customerController.updateWhenRent(customerId, cars.get(carIndex).getId());
                 CarSharingUtil.printf("CUSTOMER_RENT_CAR_NAME_INFO", cars.get(carIndex).getName());
@@ -112,19 +106,17 @@ public class CustomerCommand implements Command {
     }
 
     private List<Car> getAvailableCars(int companyId) {
-
-        List<Customer> customers = customerController.findAll();
-
-        List<Integer> rentedCarIds = customers.stream()
-                .map(Customer::getRentedCarId)
-                .distinct()
-                .collect(Collectors.toList());
-
-        Predicate<Car> isAvailable = car -> rentedCarIds.stream().allMatch(integer -> car.getId() != integer);
-
         return carController.findCarByCompanyId(companyId)
                 .stream()
-                .filter(isAvailable)
+                .filter(this::isAvailable)
                 .collect(Collectors.toList());
+    }
+
+    private boolean isAvailable(Car car) {
+        return customerController.findAll()
+                .stream()
+                .map(Customer::getRentedCarId)
+                .distinct()
+                .allMatch(integer -> car.getId() != integer);
     }
 }

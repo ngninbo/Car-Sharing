@@ -3,8 +3,6 @@ package carsharing.menu;
 import carsharing.command.StartCommand;
 import carsharing.controller.ControllerFactory;
 
-import java.io.IOException;
-
 public class StartMenu extends Menu {
 
     private final ControllerFactory controllerFactory;
@@ -20,7 +18,7 @@ public class StartMenu extends Menu {
     }
 
     @Override
-    public boolean process(MenuItem item) throws IOException {
+    public boolean process(MenuItem item) {
 
         if (!new StartCommand(controllerFactory).execute(item)) {
             menuItem = MenuItem.UNKNOWN;
